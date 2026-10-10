@@ -760,7 +760,7 @@ function initAuctionsData() {
 // ==========================================
 let defaultFactionsData = [
   {
-    id: 1,
+    id: 2,
     code: 'gov',
     name: 'الحكومة الفيدرالية للولايات',
     type: 'حكومي',
@@ -771,10 +771,10 @@ let defaultFactionsData = [
     cardBg: 'from-amber-950/40 via-[#0d1424] to-[#080d1a]',
     emblemBg: 'from-amber-600 to-amber-900',
     watermarkIcon: 'gov',
-    members: 28,
+    members: 1,
     phone: '660',
     level: 1,
-    newsCount: 83,
+    newsCount: 0,
     hasHiringBadge: false,
     description: 'السلطة التنفيذية والتشريعية العليا في لوس سانتوس، مسؤولة عن إدارة ميزانية الدولة وإصدار القوانين وإدارة شؤون المواطنين والمرافق الكبرى ومتابعة سير عمل كافة الوزارات والهيئات الفيدرالية.',
     news: [
@@ -788,15 +788,11 @@ let defaultFactionsData = [
       }
     ],
     leaders: [
-      { name: 'Reinhard Brock', title: 'President of the United States', avatar: 'https://api.dicebear.com/7.x/avataaars/svg?seed=ReinhardBrock&backgroundColor=ffd5dc', crown: true },
-      { name: 'Eyad', title: 'نائب رئيس الحكومة الفيدرالية', avatar: 'https://api.dicebear.com/7.x/avataaars/svg?seed=EyadGovVice&backgroundColor=ffd5dc', crown: true },
-      { name: 'Sami Walton', title: 'Secretary of Labor', avatar: 'https://api.dicebear.com/7.x/avataaars/svg?seed=SamiWalton&backgroundColor=d1d4f9', crown: true },
-      { name: 'Mohamed A.Alasmri', title: 'Secretary of Housing and Urban Development', avatar: 'https://api.dicebear.com/7.x/avataaars/svg?seed=MohamedAlasmri&backgroundColor=c0aede', crown: true },
-      { name: 'Jayce Brock', title: 'White House Chief of Staff', avatar: 'https://api.dicebear.com/7.x/avataaars/svg?seed=JayceBrock&backgroundColor=b6e3f4', crown: true }
+      { name: 'Eyad', title: 'Temp Factions Team', avatar: 'https://api.dicebear.com/7.x/avataaars/svg?seed=EyadGovVice&backgroundColor=ffd5dc', crown: true },
     ]
   },
   {
-    id: 2,
+    id: 3,
     code: 'interior',
     name: 'وزارة الداخلية',
     type: 'قانوني',
@@ -807,7 +803,7 @@ let defaultFactionsData = [
     cardBg: 'from-blue-950/40 via-[#0a152b] to-[#080d1a]',
     emblemBg: 'from-blue-600 to-blue-900',
     watermarkIcon: 'police',
-    members: 72,
+    members: 1,
     phone: '911',
     level: 1,
     newsCount: 188,
@@ -824,20 +820,11 @@ let defaultFactionsData = [
       }
     ],
     leaders: [
-      { name: 'Don Brock', title: 'Deputy Minister of Interior', avatar: 'https://api.dicebear.com/7.x/avataaars/svg?seed=DonBrock&backgroundColor=b6e3f4', crown: true },
-      { name: 'Daniel Romanov', title: 'Chief Of Police', avatar: 'https://api.dicebear.com/7.x/avataaars/svg?seed=DanielRomanov&backgroundColor=d1d4f9', crown: true },
-      { name: 'Evren Smith', title: 'Commander', avatar: 'https://api.dicebear.com/7.x/avataaars/svg?seed=EvrenCommander&backgroundColor=ffd5dc', crown: true },
-      { name: 'Melanie Truth', title: 'Captain III', avatar: 'https://api.dicebear.com/7.x/avataaars/svg?seed=MelanieTruth&backgroundColor=c0aede', crown: true },
-      { name: "Cristian G'Hunter", title: 'Captain II', avatar: 'https://api.dicebear.com/7.x/avataaars/svg?seed=CristianHunter&backgroundColor=ffdfba', crown: true },
-      { name: 'Joulla Brock', title: 'Captain I', avatar: 'https://api.dicebear.com/7.x/avataaars/svg?seed=JoullaBrock&backgroundColor=bae1ff', crown: true },
-      { name: 'Steven Harris', title: 'Lieutenant II', avatar: 'https://api.dicebear.com/7.x/avataaars/svg?seed=StevenHarris&backgroundColor=baffc9', crown: true },
-      { name: 'Sebastian Alomari', title: 'Lieutenant I', avatar: 'https://api.dicebear.com/7.x/avataaars/svg?seed=SebastianAlomari&backgroundColor=ffb3ba', crown: true },
-      { name: 'Seven Brock', title: 'Police Officer I', avatar: 'https://api.dicebear.com/7.x/avataaars/svg?seed=SevenBrock&backgroundColor=d1d4f9', crown: true },
-      { name: 'Robin Brock', title: 'Temp Factions Team', avatar: 'https://api.dicebear.com/7.x/avataaars/svg?seed=RobinBrock&backgroundColor=ffd5dc', crown: true }
+      { name: 'Eyad', title: 'Temp Factions Team', avatar: 'https://api.dicebear.com/7.x/avataaars/svg?seed=DonBrock&backgroundColor=b6e3f4', crown: true },
     ]
   },
   {
-    id: 3,
+    id: 4,
     code: 'swat',
     name: 'قوات التدخل السريع',
     type: 'قانوني',
@@ -848,7 +835,7 @@ let defaultFactionsData = [
     cardBg: 'from-slate-900/60 via-[#0e1320] to-[#080d1a]',
     emblemBg: 'from-slate-800 to-indigo-950',
     watermarkIcon: 'swat',
-    members: 3,
+    members: 0,
     phone: '999',
     level: 1,
     newsCount: 0,
@@ -888,15 +875,7 @@ let defaultFactionsData = [
       }
     ],
     leaders: [
-      { name: 'Mohamed Petrov', title: 'Secretary of Defense', avatar: 'https://api.dicebear.com/7.x/avataaars/svg?seed=MohamedPetrov&backgroundColor=ffd5dc', crown: true },
-      { name: 'Spiro Petrov', title: 'Deputy Secretary of Defense', avatar: 'https://api.dicebear.com/7.x/avataaars/svg?seed=SpiroPetrov&backgroundColor=d1d4f9', crown: true },
-      { name: 'Zoro Roronoa', title: 'General of the Army', avatar: 'https://api.dicebear.com/7.x/avataaars/svg?seed=ZoroArmy&backgroundColor=b6e3f4', crown: true },
-      { name: 'Ghaith Shaher', title: 'General of the Army', avatar: 'https://api.dicebear.com/7.x/avataaars/svg?seed=GhaithShaher&backgroundColor=c0aede', crown: true },
-      { name: 'Abdullah Walton', title: 'General', avatar: 'https://api.dicebear.com/7.x/avataaars/svg?seed=AbdullahGeneral&backgroundColor=ffdfba', crown: true },
-      { name: 'Leon Qwerz', title: 'General', avatar: 'https://api.dicebear.com/7.x/avataaars/svg?seed=LeonQwerz&backgroundColor=bae1ff', crown: true },
-      { name: 'Alpha Alexander', title: 'Lieutenant General', avatar: 'https://api.dicebear.com/7.x/avataaars/svg?seed=AlphaAlexander&backgroundColor=baffc9', crown: true },
-      { name: 'Demetri Italiano', title: 'Major General', avatar: 'https://api.dicebear.com/7.x/avataaars/svg?seed=DemetriMajor&backgroundColor=ffb3ba', crown: true },
-      { name: 'Henry S.Walton', title: 'Brigadier General', avatar: 'https://api.dicebear.com/7.x/avataaars/svg?seed=HenryBrigadier&backgroundColor=d1d4f9', crown: true }
+      { name: 'Eyad', title: 'Temp Factions Team', avatar: 'https://api.dicebear.com/7.x/avataaars/svg?seed=MohamedPetrov&backgroundColor=ffd5dc', crown: true },
     ]
   },
   {
