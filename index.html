@@ -1,0 +1,2041 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Al-AzayzahRP - عالم العزايزة | الحياة الواقعية MTA:SA</title>
+  
+  <!-- Favicon with Stylized 'A' Monogram -->
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 48 48'><path d='M24 4L6 44H15L19 34H29L33 44H42L24 4ZM24 16L27 27H21L24 16Z' fill='%23ffffff'/></svg>">
+
+  <!-- Fonts (Cairo & Tajawal for authentic Arabic gaming UI) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+  
+  <!-- FontAwesome 6 -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            brand: {
+              dark: '#080c16',
+              surface: '#0d1322',
+              card: 'rgba(13, 19, 34, 0.78)',
+              accent: '#5865f2',
+              purple: '#6366f1'
+            }
+          }
+        }
+      }
+    }
+  </script>
+
+  <!-- Custom Styles -->
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body class="bg-[#080c16] text-gray-100 min-h-screen flex flex-col justify-between selection:bg-indigo-600 selection:text-white font-['Cairo']">
+
+  <!-- ==================== TOP NAVIGATION BAR & BROADCAST ==================== -->
+  <header id="main-header" class="fixed top-0 left-0 w-full z-50 transition-all duration-300">
+    <!-- Top Broadcast Announcement Banner -->
+    <div id="broadcast-banner" class="hidden text-white py-2.5 px-4 text-center text-xs font-bold tracking-wide shadow-md border-b border-indigo-400/30">
+      <div class="max-w-[1550px] mx-auto flex items-center justify-center gap-3">
+        <span class="px-2.5 py-0.5 rounded bg-black/40 text-amber-300 text-[10px] uppercase font-mono border border-amber-400/30">تنبيه إداري عاجل</span>
+        <span id="broadcast-banner-text" class="text-white">مرحباً بكم في سيرفر Al-AzayzahRP! فعالية كبرى الليلة الساعة 9:00 مساءً بمقر الفاينوود.</span>
+        <button onclick="dismissBroadcast()" class="text-white/80 hover:text-white mr-4 p-1 hover:bg-black/20 rounded-md transition-colors" title="إغلاق الإعلان"><i class="fa-solid fa-xmark"></i></button>
+      </div>
+    </div>
+
+    <!-- Navigation Bar Inner -->
+    <div class="glass-nav border-b border-white/10">
+      <div class="max-w-[1550px] mx-auto px-4 sm:px-8 h-20 flex items-center justify-between">
+      
+      <!-- Right Side: Al-AzayzahRP Stylized 'A' Logo & Main Navigation Links -->
+      <div class="flex items-center gap-10">
+        <!-- Logo -->
+        <a href="#home" onclick="switchTab('home')" class="flex items-center gap-3 cursor-pointer group">
+          <div class="w-11 h-11 rounded-2xl bg-white/10 hover:bg-white/20 border border-white/15 flex items-center justify-center transition-all group-hover:scale-105 shadow-lg shadow-white/5">
+            <svg class="w-7 h-7 text-white" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M24 4L6 44H15L19 34H29L33 44H42L24 4ZM24 16L27 27H21L24 16Z" fill="currentColor"/>
+            </svg>
+          </div>
+          <div class="hidden sm:flex flex-col">
+            <span class="font-black text-lg tracking-wider text-white">Al-AzayzahRP</span>
+            <span class="text-[10px] text-indigo-400 font-semibold tracking-widest uppercase -mt-1">العزايزة رول بلاي</span>
+          </div>
+        </a>
+
+        <!-- Desktop Navigation Items (Ordered matching screenshots) -->
+        <nav class="hidden xl:flex items-center gap-7 text-[15px] font-medium text-gray-300">
+          <a href="#rules" onclick="switchTab('rules')" data-tab="rules" class="nav-link py-1 hover:text-white transition-colors">القوانين</a>
+          <a href="#applications" onclick="switchTab('applications')" data-tab="applications" class="nav-link py-1 hover:text-white transition-colors">التقديمات</a>
+          <a href="#auctions" onclick="switchTab('auctions')" data-tab="auctions" class="nav-link py-1 hover:text-white transition-colors">المزادات</a>
+          <a href="#factions" onclick="switchTab('factions')" data-tab="factions" class="nav-link py-1 hover:text-white transition-colors">القطاعات</a>
+          <a href="#store" onclick="switchTab('store')" data-tab="store" class="nav-link py-1 hover:text-white transition-colors">المتجر</a>
+          <a href="#support" onclick="switchTab('support')" data-tab="support" class="nav-link py-1 hover:text-white transition-colors">الدعم الفني</a>
+          <a href="#discord" onclick="switchTab('discord')" data-tab="discord" class="nav-link py-1 hover:text-white transition-colors">ربط الديسكورد</a>
+          <a href="#user" onclick="switchTab('user')" data-tab="user" class="nav-link py-1 hover:text-white transition-colors flex items-center gap-1.5 text-indigo-400">
+            <i class="fa-solid fa-user-astronaut text-xs"></i>
+            <span>الملف الشخصي</span>
+          </a>
+          <a href="#admin" onclick="switchTab('admin')" data-tab="admin" class="nav-link py-1 text-amber-400 hover:text-amber-300 transition-colors flex items-center gap-1.5 font-bold bg-amber-500/10 px-3 rounded-lg border border-amber-500/20">
+            <i class="fa-solid fa-crown text-xs text-amber-400"></i>
+            <span>لوحة الإدارة</span>
+          </a>
+        </nav>
+      </div>
+
+      <!-- Left Side: User Profile & Quick Actions -->
+      <div class="flex items-center gap-3">
+        <!-- 1. Apps Grid Button (9 dots) -->
+        <button onclick="openPlayNowModal()" title="دخول مباشر للسيرفر" class="w-10 h-10 rounded-xl bg-white/5 hover:bg-white/10 border border-white/10 flex items-center justify-center text-gray-300 hover:text-white transition-all">
+          <i class="fa-solid fa-table-cells-large text-sm"></i>
+        </button>
+
+        <!-- 2. User Profile Chip (Eyad + Avatar) -->
+        <div class="relative">
+          <button onclick="switchTab('user')" title="الملف الشخصي" class="flex items-center gap-2.5 px-3 py-1.5 rounded-xl bg-white/5 hover:bg-white/10 border border-white/10 transition-all cursor-pointer">
+            <span class="text-sm font-bold text-white tracking-wide">Eyad</span>
+            <div class="relative">
+              <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=120&q=80" alt="Eyad" class="w-7 h-7 rounded-full object-cover border border-amber-400">
+              <span class="absolute bottom-0 right-0 w-2 h-2 rounded-full bg-emerald-500 ring-2 ring-[#080c16]"></span>
+            </div>
+          </button>
+
+          <!-- Dropdown Profile Menu -->
+          <div id="user-profile-menu" class="hidden absolute left-0 mt-3 w-64 rounded-2xl glass-panel p-4 z-50 border border-white/10 shadow-2xl">
+            <div class="flex items-center gap-3 pb-3 border-b border-white/10 mb-3">
+              <div class="w-10 h-10 rounded-xl bg-amber-600/30 border border-amber-500/40 flex items-center justify-center text-amber-400 font-bold"><i class="fa-solid fa-crown"></i></div>
+              <div>
+                <span class="font-bold text-sm text-white block">Eyad</span>
+                <span class="text-xs text-amber-400 font-bold">مؤسس السيرفر (Founder)</span>
+              </div>
+            </div>
+            <div class="space-y-1 text-xs">
+              <a href="#user" onclick="switchTab('user'); toggleUserProfile()" class="flex items-center justify-between p-2 rounded-lg bg-indigo-600/20 text-indigo-300 font-bold hover:bg-indigo-600/30 mb-1">
+                <span>الملف الشخصي والشخصيات</span>
+                <i class="fa-solid fa-user-astronaut"></i>
+              </a>
+              <a href="#admin" onclick="switchTab('admin'); toggleUserProfile()" class="flex items-center justify-between p-2 rounded-lg bg-amber-500/15 text-amber-300 font-bold hover:bg-amber-500/25">
+                <span>فتح لوحة تحكم الإدارة</span>
+                <i class="fa-solid fa-shield-halved"></i>
+              </a>
+              <a href="#auctions" onclick="switchTab('auctions'); toggleUserProfile()" class="flex items-center justify-between p-2 rounded-lg hover:bg-white/5 text-gray-300">
+                <span>مزاداتي النشطة</span>
+                <span class="px-2 py-0.5 rounded bg-indigo-500/20 text-indigo-400 font-bold">1</span>
+              </a>
+              <a href="#applications" onclick="switchTab('applications'); toggleUserProfile()" class="flex items-center justify-between p-2 rounded-lg hover:bg-white/5 text-gray-300">
+                <span>طلبات التقديم</span>
+                <span class="px-2 py-0.5 rounded bg-emerald-500/20 text-emerald-400 font-bold">مقبول</span>
+              </a>
+              <div class="pt-2 border-t border-white/10 mt-2">
+                <button onclick="showToast('تم تسجيل الخروج التجريبي')" class="w-full text-right p-2 rounded-lg text-rose-400 hover:bg-rose-500/10 font-medium">
+                  <i class="fa-solid fa-arrow-right-from-bracket ml-2"></i>
+                  تسجيل الخروج
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- 3. Notification Bell -->
+        <div class="relative">
+          <button onclick="toggleNotifications()" title="التنبيهات" class="w-10 h-10 rounded-xl bg-white/5 hover:bg-white/10 border border-white/10 flex items-center justify-center text-gray-300 hover:text-white transition-all">
+            <i class="fa-regular fa-bell text-sm"></i>
+            <span class="absolute top-2.5 right-2.5 w-2 h-2 rounded-full bg-rose-500 animate-pulse"></span>
+          </button>
+
+          <!-- Notifications Popup -->
+          <div id="notifications-drawer" class="hidden absolute left-0 mt-3 w-80 rounded-2xl glass-panel p-4 z-50 border border-white/10 shadow-2xl">
+            <div class="flex items-center justify-between pb-3 border-b border-white/10 mb-3">
+              <span class="font-bold text-sm text-white">الإشعارات الأخيرة</span>
+              <span class="text-xs text-indigo-400 cursor-pointer hover:underline" onclick="showToast('تم تحديث الإشعارات')">تحديد كمقروء</span>
+            </div>
+            <div class="space-y-2.5">
+              <div class="p-2.5 rounded-xl bg-white/5 border border-white/5 text-xs">
+                <span class="font-bold text-indigo-400 block mb-1">مزاد دوج تشارجر</span>
+                <span class="text-gray-300">أنت أعلى مزايد حالياً بمبلغ $1,800,000</span>
+                <span class="block text-[10px] text-gray-500 mt-1">منذ 15 دقيقة</span>
+              </div>
+              <div class="p-2.5 rounded-xl bg-white/5 border border-white/5 text-xs">
+                <span class="font-bold text-emerald-400 block mb-1">سيرفر Al-AzayzahRP</span>
+                <span class="text-gray-300">مرحباً بك في مجتمع العزايزة الأكبر في MTA:SA</span>
+                <span class="block text-[10px] text-gray-500 mt-1">الآن</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Mobile Navigation Menu Toggle -->
+        <button onclick="toggleMobileNav()" class="xl:hidden w-10 h-10 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center text-gray-300 hover:text-white">
+          <i class="fa-solid fa-bars"></i>
+        </button>
+      </div>
+
+    </div>
+    </div>
+
+    <!-- Mobile Drawer Navigation -->
+    <div id="mobile-menu" class="hidden xl:hidden glass-nav border-t border-white/10 px-6 py-4 space-y-2 text-sm">
+      <a href="#home" onclick="switchTab('home')" class="block py-2.5 px-3 rounded-xl hover:bg-white/5">الرئيسية</a>
+      <a href="#rules" onclick="switchTab('rules')" class="block py-2.5 px-3 rounded-xl hover:bg-white/5">القوانين</a>
+      <a href="#applications" onclick="switchTab('applications')" class="block py-2.5 px-3 rounded-xl hover:bg-white/5">التقديمات</a>
+      <a href="#auctions" onclick="switchTab('auctions')" class="block py-2.5 px-3 rounded-xl hover:bg-white/5">المزادات</a>
+      <a href="#factions" onclick="switchTab('factions')" class="block py-2.5 px-3 rounded-xl hover:bg-white/5">القطاعات</a>
+      <a href="#store" onclick="switchTab('store')" class="block py-2.5 px-3 rounded-xl hover:bg-white/5">المتجر</a>
+      <a href="#support" onclick="switchTab('support')" class="block py-2.5 px-3 rounded-xl hover:bg-white/5">الدعم الفني</a>
+      <a href="#discord" onclick="switchTab('discord')" class="block py-2.5 px-3 rounded-xl text-indigo-400 font-bold">ربط الديسكورد</a>
+      <a href="#user" onclick="switchTab('user')" class="block py-2.5 px-3 rounded-xl text-indigo-300 font-bold">الملف الشخصي والشخصيات</a>
+      <a href="#admin" onclick="switchTab('admin')" class="block py-2.5 px-3 rounded-xl text-amber-400 font-bold">لوحة الإدارة</a>
+    </div>
+  </header>
+
+  <!-- ==================== MAIN CONTENT WRAPPER ==================== -->
+  <main class="flex-1 pt-20">
+
+    <!-- ==================== 1. HOME TAB (عالم العزايزة - Exact Screenshot 1 Replica) ==================== -->
+    <section id="tab-home" class="tab-content active relative min-h-[calc(100vh-80px)] flex flex-col justify-between overflow-hidden">
+      <!-- Fullscreen Scenic Background Artwork (GTA Beach & EOEO Billboard) -->
+      <div class="absolute inset-0 z-0">
+        <img 
+          src="file:///C:/Users/Eyad/.gemini/antigravity/brain/c42083bf-d10d-4e79-bb5d-32f12e237418/wnash_hero_bg_1790983606854.jpg" 
+          alt="Al-AzayzahRP Beach Landscape" 
+          class="w-full h-full object-cover object-center"
+          onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1518709268805-4e9042af9f23?auto=format&fit=crop&w=1920&q=80'"
+        />
+        <!-- Vignette & Subtle Theme Gradients -->
+        <div class="absolute inset-0 bg-gradient-to-t from-[#080c16] via-[#080c16]/50 to-transparent"></div>
+        <div class="absolute inset-0 bg-gradient-to-r from-transparent via-[#080c16]/40 to-[#080c16]/80"></div>
+      </div>
+
+      <!-- Hero Main Content -->
+      <div class="relative z-10 max-w-[1550px] mx-auto px-4 sm:px-8 py-24 sm:py-36 w-full flex flex-col lg:flex-row items-center justify-between gap-12">
+        <div class="w-full lg:w-1/2"></div> <!-- Spacer for left beach artwork -->
+
+        <!-- Right Side: Exact Text & Buttons from Screenshot 1 with Al-AzayzahRP Branding -->
+        <div class="w-full lg:w-1/2 text-right">
+          <h2 class="text-3xl sm:text-4xl font-normal text-gray-200 mb-2 drop-shadow">ابدأ قصتك في</h2>
+          <h1 class="text-6xl sm:text-8xl font-black text-white tracking-tight mb-6 font-['Cairo'] drop-shadow-2xl">
+            عالم العزايزة
+          </h1>
+
+          <p class="text-base sm:text-xl text-gray-300 font-normal leading-relaxed mb-10 max-w-xl drop-shadow">
+            المجتمع العربي الأكبر في منصة MTA:SA. نقدم تجربة حياة واقعية متكاملة مع أنظمة حصرية ومجتمع راقٍ. انضم إلينا اليوم واصنع قصتك الخاصة في سيرفر Al-AzayzahRP.
+          </p>
+
+          <!-- Buttons matching Screenshot 1 -->
+          <div class="flex flex-wrap items-center gap-4">
+            <!-- 1. ابدأ اللعب الآن -->
+            <button 
+              onclick="openPlayNowModal()"
+              class="px-8 py-4 rounded-full bg-white hover:bg-gray-100 text-gray-950 font-black text-base transition-all shadow-2xl hover:scale-105 flex items-center gap-3 group"
+            >
+              <span>ابدأ اللعب الآن</span>
+              <div class="w-7 h-7 rounded-full bg-indigo-600 text-white flex items-center justify-center text-xs group-hover:scale-110 transition-transform">
+                <i class="fa-solid fa-play"></i>
+              </div>
+            </button>
+
+            <!-- 2. شاهد العرض -->
+            <button 
+              onclick="openTrailerModal()"
+              class="px-8 py-4 rounded-full bg-black/60 hover:bg-black/80 backdrop-blur-md border border-white/20 text-white font-bold text-base transition-all hover:scale-105 flex items-center gap-3"
+            >
+              <i class="fa-brands fa-youtube text-rose-500 text-xl"></i>
+              <span>شاهد العرض</span>
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Bottom Status Bar (Exact Replica of Screenshot 1) -->
+      <div class="relative z-10 w-full bg-black/80 backdrop-blur-md border-t border-white/10 py-4 px-6 sm:px-8">
+        <div class="max-w-[1550px] mx-auto flex flex-col sm:flex-row items-center justify-between gap-3 text-xs tracking-wider font-mono">
+          <!-- Left in English -->
+          <div class="text-gray-400 tracking-[0.25em] flex items-center gap-6">
+            <span>ROLEPLAY</span>
+            <span>GTA SA</span>
+            <span>MTA SA</span>
+          </div>
+
+          <!-- Right in English with Live Server Info -->
+          <div class="flex items-center gap-6 text-gray-300">
+            <div>
+              <span>PLAYERS:</span>
+              <span id="live-player-count" class="font-bold text-white text-sm ml-1">184</span>
+              <span class="text-gray-500">/ <span id="hero-max-players">250</span></span>
+            </div>
+            <div class="flex items-center gap-2">
+              <span>SERVER STATUS:</span>
+              <span id="hero-server-status-badge" class="font-bold text-emerald-400 flex items-center gap-1.5">
+                <span class="w-2 h-2 rounded-full bg-emerald-400 animate-ping"></span>
+                ONLINE
+              </span>
+            </div>
+            <button onclick="copyServerIP()" class="hidden md:flex items-center gap-1.5 px-3 py-1 rounded bg-white/10 hover:bg-indigo-600 text-gray-200 text-xs font-mono transition-all" title="انقر لنسخ الآي بي">
+              <i class="fa-regular fa-copy"></i>
+              <span id="hero-server-ip-text">play.al-azayzahrp.net:22003</span>
+            </button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== 2. RULES TAB (دستور Al-AzayzahRP - Exact Screenshot 2) ==================== -->
+    <section id="tab-rules" class="tab-content relative min-h-[calc(100vh-80px)] py-12 px-4 sm:px-8">
+      <!-- Ambient Background -->
+      <div class="fixed inset-0 z-0 pointer-events-none opacity-25">
+        <img 
+          src="file:///C:/Users/Eyad/.gemini/antigravity/brain/c42083bf-d10d-4e79-bb5d-32f12e237418/night_city_bg_1790983714681.jpg" 
+          alt="Night City Background" 
+          class="w-full h-full object-cover"
+        />
+        <div class="absolute inset-0 bg-[#080c16]/90"></div>
+      </div>
+
+      <div class="relative z-10 max-w-[1400px] mx-auto">
+        <!-- Header Matching Screenshot 2 -->
+        <div class="text-center max-w-3xl mx-auto mb-14">
+          <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-indigo-500/10 border border-indigo-500/20 text-xs text-indigo-400 font-semibold mb-4">
+            <i class="fa-solid fa-shield-halved"></i>
+            <span>قوانين السيرفر</span>
+          </div>
+          <h2 class="text-3xl sm:text-5xl font-black text-white mb-4">دستور Al-AzayzahRP</h2>
+          <p class="text-sm sm:text-base text-gray-400 leading-relaxed">
+            لضمان تجربة لعب ممتعة وعادلة للجميع، نرجو منكم الالتزام بالقوانين التالية. مخالفتها قد تعرض حسابك للحظر.
+          </p>
+        </div>
+
+        <!-- Two Columns Layout (Exact Screenshot 2) -->
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+          
+          <!-- Content Area on the Left (8 Columns in RTL) -->
+          <div class="lg:col-span-8 order-2 lg:order-1">
+            <div class="glass-panel rounded-3xl p-6 sm:p-8 border border-white/10">
+              <!-- Category Header with Big Shield Icon & Add Rule Button -->
+              <div class="flex items-center justify-between pb-6 border-b border-white/10 mb-6 flex-wrap gap-4">
+                <div class="flex items-center gap-4">
+                  <div class="w-14 h-14 rounded-2xl bg-indigo-600/20 border border-indigo-500/30 flex items-center justify-center text-indigo-400 text-2xl shadow-lg">
+                    <i id="rules-category-icon" class="fa-solid fa-shield-halved"></i>
+                  </div>
+                  <div>
+                    <h3 id="rules-category-title" class="text-2xl font-black text-white">قوانين الدسكورد</h3>
+                    <span class="text-xs text-gray-400">الالتزام بالقواعد الإدارية واجب على جميع أعضاء السيرفر</span>
+                  </div>
+                </div>
+                
+                <button onclick="openAddRuleModal()" class="px-4 py-2.5 rounded-xl bg-indigo-600/25 hover:bg-indigo-600 text-indigo-300 hover:text-white border border-indigo-500/30 text-xs font-bold transition-all flex items-center gap-2">
+                  <i class="fa-solid fa-plus"></i>
+                  <span>إضافة بند/قانون جديد</span>
+                </button>
+              </div>
+
+              <!-- Rule Cards Dynamic List -->
+              <div id="rules-cards-container" class="space-y-4">
+                <!-- Populated via app.js -->
+              </div>
+            </div>
+          </div>
+
+          <!-- Sidebar Categories on the Right (4 Columns in RTL) -->
+          <div class="lg:col-span-4 order-1 lg:order-2 space-y-2">
+            <button id="cat-btn-discord" onclick="selectRulesCategory('discord')" class="rule-cat-btn w-full p-4 rounded-2xl flex items-center justify-between text-sm font-bold transition-all bg-indigo-600 text-white shadow-lg shadow-indigo-600/30">
+              <div class="flex items-center gap-3">
+                <i class="fa-solid fa-shield-halved text-base"></i>
+                <span>قوانين الدسكورد</span>
+              </div>
+              <i class="fa-solid fa-chevron-left text-xs opacity-75"></i>
+            </button>
+
+            <button id="cat-btn-server" onclick="selectRulesCategory('server')" class="rule-cat-btn w-full p-4 rounded-2xl flex items-center justify-between text-sm font-bold transition-all bg-white/5 text-gray-300 hover:bg-white/10">
+              <div class="flex items-center gap-3">
+                <i class="fa-solid fa-shield-halved text-base"></i>
+                <span>قوانين الخادم</span>
+              </div>
+              <i class="fa-solid fa-chevron-left text-xs opacity-75"></i>
+            </button>
+
+            <button id="cat-btn-jail" onclick="selectRulesCategory('jail')" class="rule-cat-btn w-full p-4 rounded-2xl flex items-center justify-between text-sm font-bold transition-all bg-white/5 text-gray-300 hover:bg-white/10">
+              <div class="flex items-center gap-3">
+                <i class="fa-solid fa-shield-halved text-base"></i>
+                <span>أوقات السجون</span>
+              </div>
+              <i class="fa-solid fa-chevron-left text-xs opacity-75"></i>
+            </button>
+
+            <button id="cat-btn-mute" onclick="selectRulesCategory('mute')" class="rule-cat-btn w-full p-4 rounded-2xl flex items-center justify-between text-sm font-bold transition-all bg-white/5 text-gray-300 hover:bg-white/10">
+              <div class="flex items-center gap-3">
+                <i class="fa-solid fa-shield-halved text-base"></i>
+                <span>أوقات الميوت</span>
+              </div>
+              <i class="fa-solid fa-chevron-left text-xs opacity-75"></i>
+            </button>
+
+            <button id="cat-btn-ban" onclick="selectRulesCategory('ban')" class="rule-cat-btn w-full p-4 rounded-2xl flex items-center justify-between text-sm font-bold transition-all bg-white/5 text-gray-300 hover:bg-white/10">
+              <div class="flex items-center gap-3">
+                <i class="fa-solid fa-shield-halved text-base"></i>
+                <span>أوقات الحظر</span>
+              </div>
+              <i class="fa-solid fa-chevron-left text-xs opacity-75"></i>
+            </button>
+
+            <button id="cat-btn-factions" onclick="selectRulesCategory('factions')" class="rule-cat-btn w-full p-4 rounded-2xl flex items-center justify-between text-sm font-bold transition-all bg-white/5 text-gray-300 hover:bg-white/10">
+              <div class="flex items-center gap-3">
+                <i class="fa-solid fa-shield-halved text-base"></i>
+                <span>قوانين الفاكشنات</span>
+              </div>
+              <i class="fa-solid fa-chevron-left text-xs opacity-75"></i>
+            </button>
+
+            <button id="cat-btn-gangs" onclick="selectRulesCategory('gangs')" class="rule-cat-btn w-full p-4 rounded-2xl flex items-center justify-between text-sm font-bold transition-all bg-white/5 text-gray-300 hover:bg-white/10">
+              <div class="flex items-center gap-3">
+                <i class="fa-solid fa-shield-halved text-base"></i>
+                <span>قوانين العصابات</span>
+              </div>
+              <i class="fa-solid fa-chevron-left text-xs opacity-75"></i>
+            </button>
+
+            <button id="cat-btn-families" onclick="selectRulesCategory('families')" class="rule-cat-btn w-full p-4 rounded-2xl flex items-center justify-between text-sm font-bold transition-all bg-white/5 text-gray-300 hover:bg-white/10">
+              <div class="flex items-center gap-3">
+                <i class="fa-solid fa-shield-halved text-base"></i>
+                <span>قوانين العائلات</span>
+              </div>
+              <i class="fa-solid fa-chevron-left text-xs opacity-75"></i>
+            </button>
+
+            <button id="cat-btn-companies" onclick="selectRulesCategory('companies')" class="rule-cat-btn w-full p-4 rounded-2xl flex items-center justify-between text-sm font-bold transition-all bg-white/5 text-gray-300 hover:bg-white/10">
+              <div class="flex items-center gap-3">
+                <i class="fa-solid fa-shield-halved text-base"></i>
+                <span>قوانين الشركات</span>
+              </div>
+              <i class="fa-solid fa-chevron-left text-xs opacity-75"></i>
+            </button>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== 3. APPLICATIONS TAB (التقديمات - Exact Screenshot 3) ==================== -->
+    <section id="tab-applications" class="tab-content relative min-h-[calc(100vh-80px)] py-12 px-4 sm:px-8">
+      <div class="max-w-[1400px] mx-auto">
+        <!-- Header Matching Screenshot 3 -->
+        <div class="text-center max-w-3xl mx-auto mb-12">
+          <div class="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-indigo-500/10 border border-indigo-500/20 text-xs text-indigo-400 font-semibold mb-4">
+            <i class="fa-regular fa-clipboard"></i>
+            <span>التقديمات</span>
+          </div>
+          <h2 class="text-3xl sm:text-5xl font-black text-white mb-4">التقديمات</h2>
+          <p class="text-sm sm:text-base text-gray-400 leading-relaxed">
+            قدم على مختلف المناصب والأدوار داخل مجتمع Al-AzayzahRP. اختر تقديماً أدناه للبدء.
+          </p>
+        </div>
+
+        <!-- Section Header Matching Screenshot 3 -->
+        <div class="glass-panel rounded-2xl p-4 mb-8 border border-white/10 flex items-center justify-between flex-wrap gap-4">
+          <div class="flex items-center gap-3">
+            <div class="w-10 h-10 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center text-gray-300">
+              <i class="fa-solid fa-clipboard-list text-sm"></i>
+            </div>
+            <div>
+              <h3 class="font-bold text-base text-white">التقديمات المتاحة</h3>
+              <span class="text-xs text-gray-400" id="closed-apps-count">جارٍ التحميل...</span>
+            </div>
+          </div>
+
+          <div class="flex items-center gap-2 flex-wrap">
+            <button id="app-filter-btn-all" onclick="renderApplications('all')" class="app-filter-btn px-4 py-1.5 rounded-lg bg-indigo-600 text-white text-xs font-bold transition-all">الكل</button>
+            <button id="app-filter-btn-open" onclick="renderApplications('open')" class="app-filter-btn px-4 py-1.5 rounded-lg bg-white/5 hover:bg-white/10 text-gray-300 text-xs font-semibold transition-all">المفتوح</button>
+            <button id="app-filter-btn-closed" onclick="renderApplications('closed')" class="app-filter-btn px-4 py-1.5 rounded-lg bg-white/5 hover:bg-white/10 text-gray-300 text-xs font-semibold transition-all">المغلق</button>
+            <button onclick="switchTab('admin'); switchAdminSubtab('apps');" class="px-3.5 py-1.5 rounded-lg bg-amber-500/15 hover:bg-amber-500/25 text-amber-300 border border-amber-500/30 text-xs font-bold transition-all flex items-center gap-1.5 shadow-sm">
+              <i class="fa-solid fa-sliders text-xs"></i>
+              <span>لوحة التحكم (فتح / إغلاق)</span>
+            </button>
+          </div>
+        </div>
+
+        <!-- Applications Grid -->
+        <div id="applications-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          <!-- Injected via JavaScript -->
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== 4. AUCTIONS TAB (المزادات - Exact Screenshot 4) ==================== -->
+    <section id="tab-auctions" class="tab-content relative min-h-[calc(100vh-80px)] py-12 px-4 sm:px-8">
+      <div class="max-w-[1400px] mx-auto">
+        <!-- Header Matching Screenshot 4 -->
+        <div class="text-center max-w-3xl mx-auto mb-10">
+          <div class="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-indigo-500/10 border border-indigo-500/20 text-xs text-indigo-400 font-semibold mb-4">
+            <i class="fa-solid fa-tag"></i>
+            <span>التجارة</span>
+          </div>
+          <h2 class="text-3xl sm:text-5xl font-black text-white mb-4">المزادات</h2>
+          <p class="text-sm sm:text-base text-gray-400 leading-relaxed">
+            شارك في المزادات وابحث عن أفضل الصفقات
+          </p>
+        </div>
+
+        <!-- Filter Row Matching Screenshot 4 (Search Right, Button Left) -->
+        <div class="glass-panel rounded-2xl p-4 mb-8 border border-white/10 flex flex-col md:flex-row items-center justify-between gap-4">
+          <!-- Search Input on the Right in RTL -->
+          <div class="relative w-full md:w-96 order-1 md:order-2">
+            <input 
+              id="auction-search-input"
+              type="text" 
+              placeholder="بحث..." 
+              class="w-full pl-10 pr-4 py-2.5 rounded-xl bg-black/50 border border-white/10 text-white placeholder-gray-500 text-sm focus:outline-none focus:border-indigo-500 transition-all text-right"
+            />
+            <i class="fa-solid fa-magnifying-glass absolute left-3.5 top-3.5 text-gray-500 text-xs"></i>
+          </div>
+
+          <!-- Dropdowns & Add Button on the Left in RTL -->
+          <div class="flex items-center gap-3 w-full md:w-auto order-2 md:order-1 flex-wrap">
+            <button 
+              onclick="openAddAuctionModal()"
+              class="px-5 py-2.5 rounded-xl bg-indigo-600 hover:bg-indigo-500 text-white text-xs font-bold transition-all shadow-lg shadow-indigo-600/30 flex items-center gap-2"
+            >
+              <i class="fa-solid fa-plus text-xs"></i>
+              <span>إضافة مزاد</span>
+            </button>
+
+            <select id="auction-cat-filter" class="px-4 py-2.5 rounded-xl bg-black/50 border border-white/10 text-gray-200 text-xs focus:outline-none focus:border-indigo-500">
+              <option value="all" selected>جميع الفئات</option>
+              <option value="cars">سيارات</option>
+              <option value="weapons">أسلحة</option>
+              <option value="estates">عقارات</option>
+              <option value="special">مميز</option>
+            </select>
+
+            <select id="auction-status-filter" class="px-4 py-2.5 rounded-xl bg-black/50 border border-white/10 text-gray-200 text-xs focus:outline-none focus:border-indigo-500">
+              <option value="active" selected>نشط</option>
+              <option value="all">جميع الحالات</option>
+              <option value="ended">منتهي</option>
+            </select>
+          </div>
+        </div>
+
+        <!-- Auctions Grid Matching Screenshot 4 -->
+        <div id="auctions-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          <!-- Injected via JavaScript -->
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== 5. FACTIONS TAB (القطاعات - Dedicated View Matching Screenshots) ==================== -->
+    <section id="tab-factions" class="tab-content relative min-h-[calc(100vh-80px)] py-8 px-4 sm:px-8">
+      
+      <!-- Top Navigation & Controls Bar -->
+      <div class="max-w-[1450px] mx-auto mb-6 flex items-center justify-between flex-wrap gap-4">
+        <!-- Breadcrumb & Back Button -->
+        <div class="flex items-center gap-3">
+          <button id="factions-back-btn" onclick="toggleFactionsView('list')" class="hidden px-4 py-2 rounded-xl bg-white/5 hover:bg-white/10 border border-white/10 text-gray-300 hover:text-white text-xs font-bold transition-all flex items-center gap-2">
+            <i class="fa-solid fa-arrow-right text-xs"></i>
+            <span>العودة لكافة القطاعات</span>
+          </button>
+          
+          <div id="factions-breadcrumb" class="text-xs text-gray-400 flex items-center gap-2">
+            <span class="hover:text-white cursor-pointer transition-colors" onclick="toggleFactionsView('list')">القطاعات</span>
+            <i class="fa-solid fa-chevron-left text-[10px] text-gray-600"></i>
+            <span id="breadcrumb-faction-name" class="text-amber-400 font-bold">الحكومة الفيدرالية للولايات</span>
+          </div>
+        </div>
+
+        <!-- Quick Faction Selector Dropdown & Toggle Button -->
+        <div class="flex items-center gap-3">
+          <span class="text-xs text-gray-400 hidden sm:inline">القطاع الحالي:</span>
+          <select id="faction-quick-selector" onchange="switchFactionById(this.value)" class="px-4 py-2 rounded-xl bg-black/60 border border-white/15 text-gray-200 text-xs font-bold focus:outline-none focus:border-amber-500 transition-all">
+            <!-- Dynamically populated via app.js -->
+          </select>
+          <button onclick="toggleFactionsView('toggle')" id="btn-toggle-all-factions" class="px-4 py-2 rounded-xl bg-white/5 hover:bg-white/10 border border-white/10 text-gray-300 hover:text-white text-xs font-bold transition-all flex items-center gap-2">
+            <i class="fa-solid fa-table-cells text-xs"></i>
+            <span id="btn-toggle-factions-text">تصفح الكل (11)</span>
+          </button>
+        </div>
+      </div>
+
+      <!-- VIEW 1: Detailed Single Faction Page (Exact Screenshots 1, 2, 3 Replica) -->
+      <div id="faction-detail-page" class="max-w-[1450px] mx-auto">
+        <!-- Faction Hero Banner with Eagle Watermark -->
+        <div class="relative rounded-3xl overflow-hidden p-6 sm:p-10 mb-8 border border-amber-500/20 faction-hero-container shadow-2xl">
+          <!-- Ambient Gold Glow & Background -->
+          <div class="absolute inset-0 bg-gradient-to-b from-[#131b2e] via-[#0b101d] to-[#080c16]"></div>
+          <div class="absolute inset-0 bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-amber-500/10 via-transparent to-transparent"></div>
+          
+          <!-- Background Eagle Watermark (Emblem) -->
+          <div class="absolute inset-0 flex items-center justify-center pointer-events-none opacity-[0.06] overflow-hidden">
+            <svg class="w-[620px] h-[620px] text-amber-400 transform -translate-y-4" viewBox="0 0 512 512" fill="currentColor">
+              <path d="M256 0c14.1 0 27.8 2.2 40.7 6.3l-2.6 10.5c-4.3 17.5-6.6 35.5-6.8 53.6-10.4-1.6-21-2.4-31.3-2.4s-20.9 .8-31.3 2.4c-.2-18.1-2.5-36.1-6.8-53.6L215.3 6.3C228.2 2.2 241.9 0 256 0zm-84.3 84.4c6.8-1.5 13.7-2.6 20.7-3.4 3.7 20.6 6.3 41.5 7.7 62.6-9.6 1.7-19.1 4.1-28.4 7.2l-.1-.5c-.2-22-3.1-43.9-9.1-64.8l9.2-1.1zm168.6 0l9.2 1.1c-6 20.9-8.9 42.8-9.1 64.8l-.1 .5c-9.3-3.1-18.8-5.5-28.4-7.2 1.4-21.1 4-42 7.7-62.6 7 .8 13.9 1.9 20.7 3.4zM256 512c-141.4 0-256-114.6-256-256S114.6 0 256 0s256 114.6 256 256-114.6 256-256 256z"/>
+            </svg>
+          </div>
+
+          <div class="relative z-10 flex flex-col lg:flex-row items-center justify-between gap-8">
+            
+            <!-- Left Side in RTL: Stats Widget Bar -->
+            <div class="order-3 lg:order-1 w-full lg:w-auto">
+              <div class="glass-panel rounded-2xl p-4 sm:px-6 sm:py-3.5 border border-white/10 flex items-center justify-between sm:justify-start gap-6 sm:gap-8 bg-black/50 backdrop-blur-xl">
+                <!-- Members -->
+                <div class="text-right">
+                  <span class="text-[11px] text-gray-400 block mb-1">الأعضاء</span>
+                  <div class="flex items-center gap-2">
+                    <i class="fa-solid fa-users text-amber-400 text-sm"></i>
+                    <span id="detail-members-count" class="text-base font-black text-white">28</span>
+                  </div>
+                </div>
+
+                <div class="w-px h-8 bg-white/10"></div>
+
+                <!-- Phone -->
+                <div class="text-right">
+                  <span class="text-[11px] text-gray-400 block mb-1">الهاتف</span>
+                  <div class="flex items-center gap-2">
+                    <i class="fa-solid fa-phone text-amber-400 text-sm"></i>
+                    <span id="detail-phone-number" class="text-base font-black text-white font-mono">660</span>
+                  </div>
+                </div>
+
+                <div class="w-px h-8 bg-white/10"></div>
+
+                <!-- Level -->
+                <div class="text-right">
+                  <span class="text-[11px] text-gray-400 block mb-1">المستوى</span>
+                  <div class="flex items-center gap-2">
+                    <i class="fa-solid fa-arrow-trend-up text-amber-400 text-sm"></i>
+                    <span id="detail-level-number" class="text-base font-black text-white font-mono">1</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Center: Faction Title & Type Badge -->
+            <div class="order-2 text-center lg:text-right flex-1">
+              <h1 id="detail-faction-name" class="text-3xl sm:text-4xl lg:text-5xl font-black text-white tracking-wide mb-3">
+                الحكومة الفيدرالية للولايات
+              </h1>
+              <div class="flex items-center justify-center lg:justify-start gap-3">
+                <span id="detail-faction-type" class="px-3.5 py-1 rounded-full text-xs font-bold bg-amber-500/15 text-amber-400 border border-amber-500/30 flex items-center gap-1.5 shadow-sm">
+                  <i id="detail-faction-badge-icon" class="fa-solid fa-landmark text-xs"></i>
+                  <span id="detail-faction-type-text">حكومي</span>
+                </span>
+              </div>
+            </div>
+
+            <!-- Right Side in RTL: Faction Official Seal / Emblem -->
+            <div class="order-1 lg:order-3">
+              <div class="w-24 h-24 sm:w-28 sm:h-28 rounded-3xl bg-[#0b1222] border-2 border-amber-500/30 p-2 shadow-2xl shadow-amber-500/15 flex items-center justify-center relative group">
+                <div class="w-full h-full rounded-2xl overflow-hidden flex items-center justify-center bg-gradient-to-br from-amber-600/20 via-blue-900/30 to-black relative">
+                  <div id="detail-faction-seal-container" class="w-full h-full flex items-center justify-center">
+                    <!-- Dynamic Seal populated via JS -->
+                  </div>
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+        <!-- Sub-tabs Navigation Bar (الوصف / الأخبار / القادة) -->
+        <div class="flex items-center justify-end mb-6">
+          <div class="glass-panel p-1.5 rounded-2xl border border-white/10 flex items-center gap-2 bg-[#0c1220]/90">
+            <!-- Tab 3: Leaders (القادة) -->
+            <button onclick="switchFactionSubtab('leaders')" id="fsubtab-btn-leaders" class="fsubtab-btn px-4 py-2 rounded-xl text-xs font-bold transition-all text-gray-400 hover:text-white flex items-center gap-2">
+              <i class="fa-solid fa-crown text-amber-400 text-xs"></i>
+              <span>القادة (<span id="fsubtab-leaders-count">4</span>)</span>
+            </button>
+
+            <!-- Tab 2: News (الأخبار - Default Active) -->
+            <button onclick="switchFactionSubtab('news')" id="fsubtab-btn-news" class="fsubtab-btn active px-4 py-2 rounded-xl text-xs font-bold transition-all flex items-center gap-2">
+              <i class="fa-solid fa-newspaper text-xs"></i>
+              <span>الأخبار (<span id="fsubtab-news-count">83</span>)</span>
+            </button>
+
+            <!-- Tab 1: Description (الوصف) -->
+            <button onclick="switchFactionSubtab('desc')" id="fsubtab-btn-desc" class="fsubtab-btn px-4 py-2 rounded-xl text-xs font-bold transition-all text-gray-400 hover:text-white flex items-center gap-2">
+              <i class="fa-regular fa-file-lines text-xs"></i>
+              <span>الوصف</span>
+            </button>
+          </div>
+        </div>
+
+        <!-- SUBTAB CONTENT 1: الأخبار (News - Screenshot 1 Match) -->
+        <div id="fsubtab-content-news" class="fsubtab-content">
+          <div class="glass-panel rounded-3xl p-6 sm:p-8 border border-white/10 mb-8">
+            <div class="flex items-center justify-between pb-4 border-b border-white/10 mb-6">
+              <h3 class="text-lg font-bold text-white flex items-center gap-2">
+                <i class="fa-solid fa-newspaper text-amber-400"></i>
+                <span>الأخبار</span>
+              </h3>
+              <button onclick="openAddNewsModal()" class="px-3.5 py-1.5 rounded-xl bg-amber-500/10 hover:bg-amber-500/20 text-amber-300 border border-amber-500/30 text-xs font-bold transition-all flex items-center gap-1.5">
+                <i class="fa-solid fa-plus text-[10px]"></i>
+                <span>نشر خبر جديد</span>
+              </button>
+            </div>
+
+            <!-- News Items Stream -->
+            <div id="faction-news-list" class="space-y-8">
+              <!-- Injected via JavaScript -->
+            </div>
+          </div>
+        </div>
+
+        <!-- SUBTAB CONTENT 2: الوصف (Description - Screenshot 2 Match) -->
+        <div id="fsubtab-content-desc" class="fsubtab-content hidden">
+          <div class="glass-panel rounded-3xl p-8 border border-white/10 min-h-[300px] flex flex-col justify-between">
+            <div id="faction-desc-body" class="text-sm text-gray-300 leading-relaxed py-8">
+              <!-- Injected via JavaScript -->
+            </div>
+
+            <div class="pt-6 border-t border-white/10 flex items-center justify-between flex-wrap gap-4">
+              <span class="text-xs text-gray-400">هل ترغب بالانضمام والخدمة في صفوف هذا القطاع؟</span>
+              <button onclick="switchTab('applications')" class="px-6 py-2.5 rounded-xl btn-primary-glow font-bold text-xs flex items-center gap-2">
+                <i class="fa-solid fa-paper-plane text-xs"></i>
+                <span>التقديم على هذا القطاع الآن</span>
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- SUBTAB CONTENT 3: القادة (Leaders - Screenshot 3 Match) -->
+        <div id="fsubtab-content-leaders" class="fsubtab-content hidden">
+          <div class="glass-panel rounded-3xl p-6 sm:p-8 border border-white/10">
+            <div class="flex items-center justify-between pb-4 border-b border-white/10 mb-6">
+              <h3 class="text-lg font-bold text-white flex items-center gap-2">
+                <span>القادة</span>
+                <span class="text-amber-400 text-base">👑</span>
+              </h3>
+              <span class="text-xs text-gray-400">الهيكل القيادي والإداري للقطاع</span>
+            </div>
+
+            <!-- 4 Leader Cards Grid -->
+            <div id="faction-leaders-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
+              <!-- Injected via JavaScript -->
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- VIEW 2: Grid of All 11 Factions (Browse All Factions) -->
+      <div id="factions-list-page" class="max-w-[1450px] mx-auto hidden">
+        <div class="text-center max-w-3xl mx-auto mb-10">
+          <h2 class="text-3xl sm:text-5xl font-black text-white mb-3">القطاعات</h2>
+          <p class="text-sm text-gray-400">استكشف القطاعات المتاحة في عالم العزايزة</p>
+        </div>
+        <div id="factions-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
+          <!-- Injected via JavaScript -->
+        </div>
+      </div>
+
+    </section>
+
+    <!-- ==================== 6. STORE TAB (المتجر) ==================== -->
+    <section id="tab-store" class="tab-content relative min-h-[calc(100vh-80px)] py-12 px-4 sm:px-8">
+      <div class="max-w-[1400px] mx-auto">
+        <div class="text-center max-w-3xl mx-auto mb-12">
+          <div class="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-indigo-500/10 border border-indigo-500/20 text-xs text-indigo-400 font-semibold mb-4">
+            <i class="fa-solid fa-crown"></i>
+            <span>المتجر الرسمي</span>
+          </div>
+          <h2 class="text-3xl sm:text-5xl font-black text-white mb-4">متجر Al-AzayzahRP</h2>
+          <p class="text-sm sm:text-base text-gray-400 leading-relaxed">
+            ادعم السيرفر واحصل على مميزات ورتب VIP حصرية وسيارات نادرة مع تسليم فوري وتلقائي داخل اللعبة.
+          </p>
+        </div>
+
+        <!-- VIP Packages Grid -->
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-16">
+          <div class="glass-panel rounded-3xl p-8 border border-white/10 glow-card flex flex-col justify-between">
+            <div>
+              <span class="px-3 py-1 rounded-full text-xs font-bold bg-amber-700/20 text-amber-400 border border-amber-700/30 inline-block mb-4">VIP BRONZE</span>
+              <h3 class="text-2xl font-black text-white mb-2">الباقة البرونزية</h3>
+              <div class="text-3xl font-black text-amber-400 mb-6 font-mono">$ 15 <span class="text-xs text-gray-400 font-normal">/ شهرياً</span></div>
+              <ul class="space-y-3 text-xs text-gray-300 mb-8">
+                <li class="flex items-center gap-2"><i class="fa-solid fa-check text-emerald-400"></i> رتبة VIP برونزي بالديسكورد واللعبة</li>
+                <li class="flex items-center gap-2"><i class="fa-solid fa-check text-emerald-400"></i> راتب شهري إضافي $250,000</li>
+                <li class="flex items-center gap-2"><i class="fa-solid fa-check text-emerald-400"></i> تخفيض 10% في معارض السيارات</li>
+              </ul>
+            </div>
+            <button onclick="purchaseItem('الباقة البرونزية', 15)" class="w-full py-3 rounded-xl bg-white/10 hover:bg-amber-600 text-white font-bold text-sm transition-all border border-white/15">شراء الآن</button>
+          </div>
+
+          <div class="glass-panel rounded-3xl p-8 border-2 border-indigo-500/60 glow-card relative flex flex-col justify-between shadow-2xl shadow-indigo-600/20 scale-105">
+            <div class="absolute -top-3.5 left-1/2 -translate-x-1/2 px-4 py-1 rounded-full bg-indigo-600 text-white font-bold text-xs shadow-lg">الأكثر طلباً ⭐</div>
+            <div>
+              <span class="px-3 py-1 rounded-full text-xs font-bold bg-indigo-500/20 text-indigo-400 border border-indigo-500/30 inline-block mb-4">VIP GOLD</span>
+              <h3 class="text-2xl font-black text-white mb-2">الباقة الذهبية</h3>
+              <div class="text-3xl font-black text-indigo-400 mb-6 font-mono">$ 35 <span class="text-xs text-gray-400 font-normal">/ شهرياً</span></div>
+              <ul class="space-y-3 text-xs text-gray-300 mb-8">
+                <li class="flex items-center gap-2"><i class="fa-solid fa-check text-emerald-400"></i> جميع مزايا الباقة البرونزية</li>
+                <li class="flex items-center gap-2"><i class="fa-solid fa-check text-emerald-400"></i> سيارة رياضية حصرية من اختيارك</li>
+                <li class="flex items-center gap-2"><i class="fa-solid fa-check text-emerald-400"></i> راتب إضافي $750,000 أسبوعياً</li>
+                <li class="flex items-center gap-2"><i class="fa-solid fa-check text-emerald-400"></i> دخول سريع عند امتلاء السيرفر (Queue Priority)</li>
+              </ul>
+            </div>
+            <button onclick="purchaseItem('الباقة الذهبية', 35)" class="w-full py-3 rounded-xl btn-primary-glow font-bold text-sm transition-all shadow-lg">شراء الآن</button>
+          </div>
+
+          <div class="glass-panel rounded-3xl p-8 border border-white/10 glow-card flex flex-col justify-between">
+            <div>
+              <span class="px-3 py-1 rounded-full text-xs font-bold bg-cyan-500/20 text-cyan-400 border border-cyan-500/30 inline-block mb-4">VIP DIAMOND</span>
+              <h3 class="text-2xl font-black text-white mb-2">الباقة الماسية</h3>
+              <div class="text-3xl font-black text-cyan-400 mb-6 font-mono">$ 70 <span class="text-xs text-gray-400 font-normal">/ شهرياً</span></div>
+              <ul class="space-y-3 text-xs text-gray-300 mb-8">
+                <li class="flex items-center gap-2"><i class="fa-solid fa-check text-emerald-400"></i> جميع مزايا الباقات السابقة</li>
+                <li class="flex items-center gap-2"><i class="fa-solid fa-check text-emerald-400"></i> قصر خاص أو مقر عائلي مع مسبح</li>
+                <li class="flex items-center gap-2"><i class="fa-solid fa-check text-emerald-400"></i> طائرة هليكوبتر خاصة</li>
+              </ul>
+            </div>
+            <button onclick="purchaseItem('الباقة الماسية', 70)" class="w-full py-3 rounded-xl bg-white/10 hover:bg-cyan-600 text-white font-bold text-sm transition-all border border-white/15">شراء الآن</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== 7. SUPPORT TAB (الدعم الفني) ==================== -->
+    <section id="tab-support" class="tab-content relative min-h-[calc(100vh-80px)] py-12 px-4 sm:px-8">
+      <div class="max-w-4xl mx-auto">
+        <div class="text-center mb-10">
+          <div class="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-indigo-500/10 border border-indigo-500/20 text-xs text-indigo-400 font-semibold mb-4">
+            <i class="fa-solid fa-headset"></i>
+            <span>المساعدة والدعم</span>
+          </div>
+          <h2 class="text-3xl sm:text-5xl font-black text-white mb-4">مركز الدعم الفني</h2>
+          <p class="text-sm sm:text-base text-gray-400">
+            فريق Al-AzayzahRP متواجد على مدار الساعة لحل المشكلات التقنية وبلاغات اللاعبين
+          </p>
+        </div>
+
+        <div class="glass-panel rounded-3xl p-8 border border-white/10 mb-10">
+          <h3 class="text-xl font-bold text-white mb-6 flex items-center gap-2">
+            <i class="fa-regular fa-paper-plane text-indigo-400"></i>
+            <span>فتح تذكرة دعم فني جديدة</span>
+          </h3>
+          <form onsubmit="submitSupportTicket(event)" class="space-y-4">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+              <div>
+                <label class="block text-xs font-semibold text-gray-300 mb-2">اسمك داخل السيرفر</label>
+                <input type="text" value="Eyad" readonly class="w-full px-4 py-3 rounded-xl bg-black/40 border border-white/10 text-gray-400 text-sm">
+              </div>
+              <div>
+                <label class="block text-xs font-semibold text-gray-300 mb-2">نوع التذكرة</label>
+                <select class="w-full px-4 py-3 rounded-xl bg-black/40 border border-white/10 text-gray-200 text-sm focus:outline-none focus:border-indigo-500">
+                  <option>مشكلة في المتجر والشحن</option>
+                  <option>بلاغ عن مخالفة قوانين (Report)</option>
+                  <option>مشكلة تقنية أو كراش في اللعبة</option>
+                  <option>طلب فك حظر أو مراجعة عقوبة</option>
+                  <option>اقتراح وتطوير</option>
+                </select>
+              </div>
+            </div>
+            <div>
+              <label class="block text-xs font-semibold text-gray-300 mb-2">عنوان المشكلة</label>
+              <input id="ticket-subject" type="text" placeholder="مثال: لم يتم وصول رتبة الـ VIP بعد عملية الشراء" class="w-full px-4 py-3 rounded-xl bg-black/40 border border-white/10 text-white placeholder-gray-500 text-sm focus:outline-none focus:border-indigo-500">
+            </div>
+            <div>
+              <label class="block text-xs font-semibold text-gray-300 mb-2">التفاصيل والأدلة (روابط صور أو فيديو)</label>
+              <textarea id="ticket-desc" rows="4" placeholder="اشرح المشكلة بالتفصيل مع إرفاق الروابط..." class="w-full px-4 py-3 rounded-xl bg-black/40 border border-white/10 text-white placeholder-gray-500 text-sm focus:outline-none focus:border-indigo-500"></textarea>
+            </div>
+            <button type="submit" class="w-full py-3.5 rounded-xl btn-primary-glow font-bold text-sm transition-all shadow-lg flex items-center justify-center gap-2">
+              <i class="fa-solid fa-ticket"></i>
+              <span>إرسال التذكرة الآن</span>
+            </button>
+          </form>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== 8. DISCORD TAB (ربط الديسكورد) ==================== -->
+    <section id="tab-discord" class="tab-content relative min-h-[calc(100vh-80px)] py-12 px-4 sm:px-8">
+      <div class="max-w-xl mx-auto text-center">
+        <div class="w-20 h-20 rounded-3xl bg-[#5865F2]/20 border border-[#5865F2]/40 text-[#5865F2] text-4xl flex items-center justify-center mx-auto mb-6 shadow-xl shadow-[#5865F2]/20">
+          <i class="fa-brands fa-discord"></i>
+        </div>
+        <h2 class="text-3xl font-black text-white mb-3">ربط حساب الديسكورد</h2>
+        <p class="text-sm text-gray-400 mb-8 leading-relaxed">
+          اربط حسابك بالديسكورد لمزامنة الرتب، استلام إشعارات المزادات، والمشاركة في التقديمات والفعاليات الرسمية في Al-AzayzahRP.
+        </p>
+
+        <div class="glass-panel rounded-3xl p-6 border border-white/10 mb-6 text-right">
+          <div class="flex items-center justify-between pb-4 border-b border-white/10 mb-4">
+            <span class="text-xs text-gray-400">حالة الربط</span>
+            <span class="px-2.5 py-1 rounded-full text-xs font-bold bg-emerald-500/20 text-emerald-400 border border-emerald-500/30 flex items-center gap-1.5">
+              <i class="fa-solid fa-circle-check text-xs"></i>
+              متصل
+            </span>
+          </div>
+          <div class="flex items-center gap-4">
+            <div class="w-12 h-12 rounded-2xl bg-[#5865F2] flex items-center justify-center text-white text-2xl font-bold">E</div>
+            <div>
+              <span class="font-bold text-white block">Eyad#2026</span>
+              <span class="text-xs text-gray-400 font-mono">ID: 894120938472910394</span>
+            </div>
+          </div>
+        </div>
+
+        <button onclick="showToast('تم تحديث ربط حساب الديسكورد بنجاح!', 'Eyad#2026', 'success')" class="w-full py-3.5 rounded-xl bg-[#5865F2] hover:bg-[#4752c4] text-white font-bold text-sm transition-all shadow-xl shadow-[#5865F2]/30 flex items-center justify-center gap-2">
+          <i class="fa-brands fa-discord text-lg"></i>
+          <span>تحديث بيانات الديسكورد (Al-AzayzahRP Community)</span>
+        </button>
+      </div>
+    </section>
+
+    <!-- ==================== 9. ADMIN DASHBOARD TAB (لوحة الإدارة الكاملة) ==================== -->
+    <section id="tab-admin" class="tab-content relative min-h-[calc(100vh-80px)] py-12 px-4 sm:px-8">
+      <div class="max-w-[1550px] mx-auto">
+        
+        <!-- Admin Header -->
+        <div class="glass-panel rounded-3xl p-6 sm:p-8 border border-amber-500/30 mb-8 relative overflow-hidden">
+          <div class="absolute -top-12 -left-12 w-48 h-48 bg-amber-500/10 rounded-full blur-3xl pointer-events-none"></div>
+          <div class="flex flex-col md:flex-row items-start md:items-center justify-between gap-6 relative z-10">
+            <div class="flex items-center gap-4">
+              <div class="w-16 h-16 rounded-2xl bg-amber-500/20 border border-amber-500/40 text-amber-400 flex items-center justify-center text-3xl shadow-xl shadow-amber-500/20">
+                <i class="fa-solid fa-crown"></i>
+              </div>
+              <div>
+                <div class="flex items-center gap-2 mb-1">
+                  <h2 class="text-2xl sm:text-3xl font-black text-white">لوحة تحكم إدارة Al-AzayzahRP</h2>
+                  <span class="px-2.5 py-0.5 rounded-full text-xs font-bold bg-amber-500/20 text-amber-400 border border-amber-500/30">SuperAdmin</span>
+                </div>
+                <p class="text-xs sm:text-sm text-gray-400">
+                  مرحباً بك يا <span class="text-amber-400 font-bold">Eyad</span>. يمكنك من هنا مراجعة طلبات اللاعبين، التحكم في المزادات، نشر الإعلانات العاجلة، وضبط إعدادات السيرفر.
+                </p>
+              </div>
+            </div>
+
+            <!-- Fast Stats Pill -->
+            <div class="flex items-center gap-3">
+              <div class="bg-black/50 px-4 py-2 rounded-xl border border-white/10 text-right">
+                <span class="text-[10px] text-gray-400 block">حالة الخادم</span>
+                <span id="admin-server-status-label" class="text-xs font-bold text-emerald-400 flex items-center gap-1.5 mt-0.5">
+                  <span class="w-2 h-2 rounded-full bg-emerald-400 animate-ping"></span>
+                  متصل (ONLINE)
+                </span>
+              </div>
+              <button onclick="switchTab('home')" class="px-4 py-2.5 rounded-xl bg-white/5 hover:bg-white/10 text-gray-300 text-xs font-semibold border border-white/10 transition-all flex items-center gap-2">
+                <i class="fa-solid fa-arrow-left"></i>
+                <span>معاينة الموقع كلاعب</span>
+              </button>
+            </div>
+          </div>
+
+          <!-- Admin Sub-Navigation Tabs -->
+          <div class="flex items-center gap-2 pt-6 mt-6 border-t border-white/10 flex-wrap">
+            <button onclick="switchAdminSubtab('overview')" id="admin-tab-btn-overview" class="admin-subtab-btn active px-4 py-2 rounded-xl text-xs font-bold transition-all flex items-center gap-2">
+              <i class="fa-solid fa-chart-pie"></i>
+              <span>نظرة عامة</span>
+            </button>
+            <button onclick="switchAdminSubtab('apps')" id="admin-tab-btn-apps" class="admin-subtab-btn px-4 py-2 rounded-xl bg-white/5 hover:bg-white/10 text-gray-300 text-xs font-semibold transition-all flex items-center gap-2">
+              <i class="fa-regular fa-clipboard"></i>
+              <span>طلبات التقديم</span>
+              <span id="admin-pending-apps-count" class="px-1.5 py-0.2 rounded-full bg-amber-500/20 text-amber-400 text-[10px] font-bold">4</span>
+            </button>
+            <button onclick="switchAdminSubtab('auctions')" id="admin-tab-btn-auctions" class="admin-subtab-btn px-4 py-2 rounded-xl bg-white/5 hover:bg-white/10 text-gray-300 text-xs font-semibold transition-all flex items-center gap-2">
+              <i class="fa-solid fa-gavel"></i>
+              <span>إدارة المزادات</span>
+            </button>
+            <button onclick="switchAdminSubtab('broadcast')" id="admin-tab-btn-broadcast" class="admin-subtab-btn px-4 py-2 rounded-xl bg-white/5 hover:bg-white/10 text-gray-300 text-xs font-semibold transition-all flex items-center gap-2">
+              <i class="fa-solid fa-bullhorn"></i>
+              <span>شريط الإعلانات والسيرفر</span>
+            </button>
+            <button onclick="switchAdminSubtab('tickets')" id="admin-tab-btn-tickets" class="admin-subtab-btn px-4 py-2 rounded-xl bg-white/5 hover:bg-white/10 text-gray-300 text-xs font-semibold transition-all flex items-center gap-2">
+              <i class="fa-solid fa-headset"></i>
+              <span>تذاكر الدعم</span>
+              <span class="px-1.5 py-0.2 rounded-full bg-rose-500/20 text-rose-400 text-[10px] font-bold">2</span>
+            </button>
+          </div>
+        </div>
+
+        <!-- SUBTAB 1: Overview -->
+        <div id="admin-subtab-overview" class="admin-subtab-content">
+          <!-- 4 Stats Cards -->
+          <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
+            <div class="admin-card p-6 border-l-4 border-indigo-500">
+              <div class="flex items-center justify-between mb-3">
+                <span class="text-xs text-gray-400 font-semibold">اللاعبون المتصلون</span>
+                <i class="fa-solid fa-users text-indigo-400 text-lg"></i>
+              </div>
+              <div class="text-3xl font-black text-white mb-1"><span id="admin-stat-players">184</span> <span class="text-sm font-normal text-gray-400">/ <span id="admin-stat-max-players">250</span></span></div>
+              <span class="text-xs text-emerald-400 flex items-center gap-1"><i class="fa-solid fa-arrow-trend-up"></i> سيرفر العزايزة في ذروة النشاط</span>
+            </div>
+
+            <div class="admin-card p-6 border-l-4 border-amber-500">
+              <div class="flex items-center justify-between mb-3">
+                <span class="text-xs text-gray-400 font-semibold">طلبات تقديم جديدة</span>
+                <i class="fa-regular fa-clipboard text-amber-400 text-lg"></i>
+              </div>
+              <div class="text-3xl font-black text-white mb-1" id="admin-stat-apps">4</div>
+              <span class="text-xs text-amber-400">تحتاج مراجعة وقرار الإدارة</span>
+            </div>
+
+            <div class="admin-card p-6 border-l-4 border-emerald-500">
+              <div class="flex items-center justify-between mb-3">
+                <span class="text-xs text-gray-400 font-semibold">المزادات النشطة</span>
+                <i class="fa-solid fa-tag text-emerald-400 text-lg"></i>
+              </div>
+              <div class="text-3xl font-black text-white mb-1" id="admin-stat-auctions">5</div>
+              <span class="text-xs text-gray-400">إجمالي المزايدات: $9,200,000</span>
+            </div>
+
+            <div class="admin-card p-6 border-l-4 border-rose-500">
+              <div class="flex items-center justify-between mb-3">
+                <span class="text-xs text-gray-400 font-semibold">تذاكر الدعم المفتوحة</span>
+                <i class="fa-solid fa-ticket text-rose-400 text-lg"></i>
+              </div>
+              <div class="text-3xl font-black text-white mb-1">2</div>
+              <span class="text-xs text-rose-400">متوسط وقت الرد: 5 دقائق</span>
+            </div>
+          </div>
+
+          <!-- Quick Action Panels -->
+          <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+            <!-- Latest Activity -->
+            <div class="glass-panel rounded-3xl p-6 border border-white/10">
+              <h3 class="font-bold text-base text-white mb-4 flex items-center gap-2">
+                <i class="fa-solid fa-clock-rotate-left text-indigo-400"></i>
+                <span>آخر العمليات والأحداث</span>
+              </h3>
+              <div class="space-y-3 text-xs" id="admin-activity-log">
+                <div class="p-3 rounded-xl bg-white/5 border border-white/5 flex items-center justify-between">
+                  <span class="text-gray-300">مزايدة جديدة بمبلغ <b class="text-emerald-400">$1,800,000</b> على سيارة دوج تشارجر</span>
+                  <span class="text-gray-500 text-[10px]">منذ 10 دقائق</span>
+                </div>
+                <div class="p-3 rounded-xl bg-white/5 border border-white/5 flex items-center justify-between">
+                  <span class="text-gray-300">طلب تقديم جديد من <b class="text-indigo-400">Ahmed_RP</b> على قطاع الشرطة</span>
+                  <span class="text-gray-500 text-[10px]">منذ 25 دقيقة</span>
+                </div>
+                <div class="p-3 rounded-xl bg-white/5 border border-white/5 flex items-center justify-between">
+                  <span class="text-gray-300">قام اللاعب <b class="text-amber-400">Fahad</b> بفتح تذكرة دعم فني جديدة</span>
+                  <span class="text-gray-500 text-[10px]">منذ 40 دقيقة</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- Server Quick Settings -->
+            <div class="glass-panel rounded-3xl p-6 border border-white/10 flex flex-col justify-between">
+              <div>
+                <h3 class="font-bold text-base text-white mb-4 flex items-center gap-2">
+                  <i class="fa-solid fa-sliders text-amber-400"></i>
+                  <span>إجراءات إدارية سريعة</span>
+                </h3>
+                <div class="grid grid-cols-2 gap-3 mb-4">
+                  <button onclick="triggerAdminBroadcastFast()" class="p-3.5 rounded-xl bg-indigo-600/20 hover:bg-indigo-600/30 border border-indigo-500/30 text-indigo-300 text-xs font-bold transition-all text-right">
+                    <i class="fa-solid fa-bullhorn text-sm block mb-1"></i>
+                    نشر إعلان عاجل
+                  </button>
+                  <button onclick="switchAdminSubtab('apps')" class="p-3.5 rounded-xl bg-amber-600/20 hover:bg-amber-600/30 border border-amber-500/30 text-amber-300 text-xs font-bold transition-all text-right">
+                    <i class="fa-regular fa-clipboard text-sm block mb-1"></i>
+                    مراجعة طلبات التقديم
+                  </button>
+                  <button onclick="toggleServerMaintenance()" class="p-3.5 rounded-xl bg-rose-600/20 hover:bg-rose-600/30 border border-rose-500/30 text-rose-300 text-xs font-bold transition-all text-right">
+                    <i class="fa-solid fa-screwdriver-wrench text-sm block mb-1"></i>
+                    وضع الصيانة
+                  </button>
+                  <button onclick="showToast('تمت مزامنة بيانات السيرفر بنجاح!')" class="p-3.5 rounded-xl bg-emerald-600/20 hover:bg-emerald-600/30 border border-emerald-500/30 text-emerald-300 text-xs font-bold transition-all text-right">
+                    <i class="fa-solid fa-rotate text-sm block mb-1"></i>
+                    مزامنة السيرفر
+                  </button>
+                  <button onclick="resetAllDataToDefault()" class="p-3.5 rounded-xl bg-rose-600/10 hover:bg-rose-600/20 border border-rose-500/20 text-rose-400 text-xs font-bold transition-all text-right col-span-2">
+                    <i class="fa-solid fa-arrows-rotate text-sm block mb-1"></i>
+                    استعادة البيانات الأصلية للوضع الافتراضي (Factory Reset)
+                  </button>
+                </div>
+              </div>
+              <div class="p-3 rounded-xl bg-black/40 border border-white/5 text-[11px] text-gray-400">
+                <i class="fa-solid fa-info-circle text-indigo-400 ml-1"></i>
+                جميع الإجراءات المتخذة في هذه اللوحة تنعكس مباشرة وفورياً على الموقع لجميع الزوار.
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- SUBTAB 2: Applications Manager -->
+        <div id="admin-subtab-apps" class="admin-subtab-content hidden space-y-8">
+          <!-- 1. Applications Open/Close Switcher -->
+          <div class="glass-panel rounded-3xl p-6 sm:p-8 border border-white/10">
+            <div class="flex items-center justify-between pb-4 border-b border-white/10 mb-5 flex-wrap gap-3">
+              <div>
+                <h3 class="text-xl font-bold text-white flex items-center gap-2">
+                  <i class="fa-solid fa-sliders text-amber-400 text-base"></i>
+                  <span>التحكم في فتح وإغلاق التقديمات</span>
+                </h3>
+                <span class="text-xs text-gray-400">اضغط على زر التبديل بجانب أي تقديم لفتحه أو إغلاقه فوراً لجميع اللاعبين</span>
+              </div>
+              <div id="admin-apps-summary-badge" class="text-xs text-amber-300 bg-amber-500/10 px-3.5 py-1.5 rounded-xl border border-amber-500/30 font-bold">
+                <!-- Open/Closed count -->
+              </div>
+            </div>
+
+            <!-- Grid of App Status Cards with Toggle Buttons -->
+            <div id="admin-apps-toggle-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3.5">
+              <!-- Dynamically populated via app.js -->
+            </div>
+          </div>
+
+          <!-- 2. Submitted Applications Pipeline Table -->
+          <div class="glass-panel rounded-3xl p-6 sm:p-8 border border-white/10">
+            <div class="flex items-center justify-between pb-6 border-b border-white/10 mb-6 flex-wrap gap-4">
+              <div>
+                <h3 class="text-xl font-bold text-white">إدارة طلبات التقديم الواردة</h3>
+                <span class="text-xs text-gray-400">قم بمراجعة بيانات المتقدمين واتخاذ قرار القبول أو الرفض</span>
+              </div>
+              <div class="flex items-center gap-2">
+                <button onclick="filterAdminApps('all')" class="px-3 py-1.5 rounded-lg bg-indigo-600 text-white text-xs font-bold">الكل</button>
+                <button onclick="filterAdminApps('pending')" class="px-3 py-1.5 rounded-lg bg-white/5 text-gray-300 text-xs font-semibold">قيد المراجعة</button>
+              </div>
+            </div>
+
+            <!-- Interactive Applications List -->
+            <div id="admin-applications-table" class="space-y-4">
+              <!-- Dynamically populated via app.js -->
+            </div>
+          </div>
+        </div>
+
+        <!-- SUBTAB 3: Auctions Manager -->
+        <div id="admin-subtab-auctions" class="admin-subtab-content hidden">
+          <div class="glass-panel rounded-3xl p-6 sm:p-8 border border-white/10 mb-8">
+            <div class="flex items-center justify-between pb-6 border-b border-white/10 mb-6 flex-wrap gap-4">
+              <div>
+                <h3 class="text-xl font-bold text-white">إدارة المزادات المتاحة</h3>
+                <span class="text-xs text-gray-400">يمكنك حذف المزادات المنتهية أو نشر مزادات إدارية حصرية</span>
+              </div>
+              <button onclick="openAddAuctionModal()" class="px-4 py-2 rounded-xl btn-primary-glow font-bold text-xs flex items-center gap-2">
+                <i class="fa-solid fa-plus"></i>
+                <span>إضافة مزاد جديد</span>
+              </button>
+            </div>
+
+            <!-- Active Auctions Table -->
+            <div id="admin-auctions-table" class="space-y-3">
+              <!-- Dynamically populated via app.js -->
+            </div>
+          </div>
+        </div>
+
+        <!-- SUBTAB 4: Announcements & Server Settings -->
+        <div id="admin-subtab-broadcast" class="admin-subtab-content hidden">
+          <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+            <!-- Broadcast Controller -->
+            <div class="glass-panel rounded-3xl p-6 sm:p-8 border border-white/10">
+              <h3 class="text-lg font-bold text-white mb-2 flex items-center gap-2">
+                <i class="fa-solid fa-bullhorn text-indigo-400"></i>
+                <span>شريط الإعلانات العاجلة (Top Banner)</span>
+              </h3>
+              <p class="text-xs text-gray-400 mb-6 leading-relaxed">
+                اكتب رسالة أو تنبيهاً يظهر في شريط متدرج بأعلى كامل صفحات الموقع لجميع الزوار فوراً.
+              </p>
+
+              <form onsubmit="applyBroadcast(event)" class="space-y-4">
+                <div>
+                  <label class="block text-xs font-semibold text-gray-300 mb-2">نص الإعلان أو التنبيه</label>
+                  <textarea id="broadcast-input-text" rows="3" class="w-full px-4 py-3 rounded-xl bg-black/40 border border-white/10 text-white placeholder-gray-500 text-xs focus:outline-none focus:border-indigo-500" placeholder="مثال: فعالية حرب العصابات الكبرى الليلة الساعة 9:00م بتوقيت مكة المكرمة - جوائز 10 مليون كاش!"></textarea>
+                </div>
+                <div class="flex items-center gap-3">
+                  <button type="button" onclick="applyBroadcast(event)" class="flex-1 py-3 rounded-xl btn-primary-glow font-bold text-xs flex items-center justify-center gap-2">
+                    <i class="fa-solid fa-bullhorn text-xs"></i>
+                    <span>نشر الإعلان في شريط الموقع</span>
+                  </button>
+                  <button type="button" onclick="hideBroadcast()" class="px-5 py-3 rounded-xl bg-white/10 hover:bg-white/20 text-gray-300 font-semibold text-xs transition-all">
+                    إخفاء الشريط
+                  </button>
+                </div>
+              </form>
+            </div>
+
+            <!-- Server IP & Status Configuration -->
+            <div class="glass-panel rounded-3xl p-6 sm:p-8 border border-white/10">
+              <h3 class="text-lg font-bold text-white mb-2 flex items-center gap-2">
+                <i class="fa-solid fa-server text-emerald-400"></i>
+                <span>إعدادات السيرفر والاتصال</span>
+              </h3>
+              <p class="text-xs text-gray-400 mb-6 leading-relaxed">
+                تحديث عنوان الآي بي الرسمي وحالة السيرفر المباشرة.
+              </p>
+
+              <form onsubmit="saveServerConfig(event)" class="space-y-4">
+                <div>
+                  <label class="block text-xs font-semibold text-gray-300 mb-1.5">عنوان الآي بي والبورت (IP:Port)</label>
+                  <input id="cfg-server-ip" type="text" value="play.al-azayzahrp.net:22003" class="w-full px-4 py-2.5 rounded-xl bg-black/40 border border-white/10 text-white font-mono text-xs focus:outline-none focus:border-indigo-500">
+                </div>
+
+                <div>
+                  <label class="block text-xs font-semibold text-gray-300 mb-1.5">حالة السيرفر المعروضة</label>
+                  <select id="cfg-server-status" class="w-full px-4 py-2.5 rounded-xl bg-black/40 border border-white/10 text-gray-200 text-xs focus:outline-none focus:border-indigo-500">
+                    <option value="online">🟢 متصل - متاح للجميع (ONLINE)</option>
+                    <option value="maintenance">🟡 تحت الصيانة (MAINTENANCE)</option>
+                    <option value="offline">🔴 غير متصل (OFFLINE)</option>
+                  </select>
+                </div>
+
+                <div>
+                  <label class="block text-xs font-semibold text-gray-300 mb-1.5">الحد الأقصى للاعبين (Player Slots)</label>
+                  <input id="cfg-max-players" type="number" value="250" class="w-full px-4 py-2.5 rounded-xl bg-black/40 border border-white/10 text-white font-mono text-xs focus:outline-none focus:border-indigo-500">
+                </div>
+
+                <button type="button" onclick="saveServerConfig(event)" class="w-full py-3 rounded-xl bg-emerald-600 hover:bg-emerald-500 font-bold text-xs text-white transition-all shadow-lg shadow-emerald-600/30 flex items-center justify-center gap-2">
+                  <i class="fa-solid fa-floppy-disk text-xs"></i>
+                  <span>حفظ الإعدادات وتحديث السيرفر فوراً</span>
+                </button>
+              </form>
+            </div>
+          </div>
+        </div>
+
+        <!-- SUBTAB 5: Support Tickets -->
+        <div id="admin-subtab-tickets" class="admin-subtab-content hidden">
+          <div class="glass-panel rounded-3xl p-6 sm:p-8 border border-white/10">
+            <h3 class="text-xl font-bold text-white mb-6">تذاكر الدعم الفني المفتوحة</h3>
+            <div id="admin-tickets-container" class="space-y-4">
+              <!-- Dynamically populated via app.js -->
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ==================== 10. USER PROFILE & CHARACTERS TAB (الملف الشخصي والشخصيات) ==================== -->
+    <section id="tab-user" class="tab-content relative min-h-[calc(100vh-80px)] py-12 px-4 sm:px-8">
+      <div class="max-w-[1550px] mx-auto">
+
+        <!-- VIEW A: USER PROFILE MAIN VIEW (wnashtime.net/user) -->
+        <div id="user-profile-view">
+          <!-- Profile Header Banner matching Screenshots 1, 2, 3, 4 -->
+          <div class="user-profile-header-bg rounded-3xl p-6 sm:p-8 lg:p-10 border border-white/10 mb-8 relative overflow-hidden shadow-2xl">
+            <div class="flex flex-col md:flex-row items-center justify-between gap-6 relative z-10">
+              
+              <!-- Right in RTL: Avatar + Username + Badges + Streak -->
+              <div class="flex flex-col sm:flex-row items-center gap-5 text-center sm:text-right">
+                <div class="w-20 h-20 sm:w-24 sm:h-24 rounded-full overflow-hidden border-2 border-indigo-400/40 shadow-2xl flex-shrink-0 bg-slate-900 ring-4 ring-white/5">
+                  <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=200&q=80" alt="Eyad" class="w-full h-full object-cover">
+                </div>
+
+                <div>
+                  <h1 class="text-3xl sm:text-4xl font-black text-white tracking-wide mb-2">Eyad</h1>
+                  <div class="flex items-center justify-center sm:justify-start gap-2.5 flex-wrap">
+                    <!-- Player ID -->
+                    <span class="text-xs text-gray-300 font-semibold bg-black/40 border border-white/10 px-3 py-1 rounded-xl">
+                      معرف اللاعب: <span class="font-mono font-bold text-white">3057</span>
+                    </span>
+                    <!-- Username badge -->
+                    <span class="text-xs text-indigo-300 font-semibold bg-indigo-500/15 border border-indigo-500/30 px-3 py-1 rounded-xl font-mono">
+                      eyadmohamed289
+                    </span>
+                    <!-- Currency badge -->
+                    <span class="text-xs text-amber-300 font-bold bg-amber-500/15 border border-amber-500/30 px-3 py-1 rounded-xl flex items-center gap-1.5 shadow-sm">
+                      <i class="fa-solid fa-coins text-amber-400"></i>
+                      <span>43 عملة</span>
+                    </span>
+                  </div>
+
+                  <!-- Streak Progress Bar -->
+                  <div class="mt-4 flex items-center gap-3 justify-center sm:justify-start">
+                    <div class="w-40 bg-white/10 rounded-full h-2 overflow-hidden">
+                      <div class="bg-gradient-to-r from-amber-500 to-indigo-500 h-2 rounded-full w-[80%]"></div>
+                    </div>
+                    <span class="text-xs font-bold text-amber-400 flex items-center gap-1">
+                      <span>24 يوم</span>
+                      <i class="fa-solid fa-fire text-amber-400"></i>
+                    </span>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Left in RTL: Logout Button -->
+              <button onclick="handleUserLogout()" class="px-5 py-2.5 rounded-xl border border-rose-500/30 bg-rose-500/10 hover:bg-rose-500 text-rose-300 hover:text-white font-bold text-xs transition-all flex items-center gap-2 shadow-sm flex-shrink-0">
+                <i class="fa-solid fa-arrow-right-from-bracket text-xs"></i>
+                <span>تسجيل الخروج</span>
+              </button>
+            </div>
+          </div>
+
+          <!-- Profile Subtabs Navbar (الشخصيات (2) / سجل الحساب / التقديمات (5)) -->
+          <div class="flex items-center justify-center sm:justify-start border-b border-white/10 mb-8 gap-8 px-2 overflow-x-auto">
+            <button onclick="switchUserSubtab('characters')" id="user-subtab-btn-characters" class="user-subtab-btn active pb-3 text-sm font-bold flex items-center gap-2">
+              <i class="fa-solid fa-shapes text-sm"></i>
+              <span>الشخصيات (2)</span>
+            </button>
+            <button onclick="switchUserSubtab('logs')" id="user-subtab-btn-logs" class="user-subtab-btn pb-3 text-sm font-semibold flex items-center gap-2">
+              <i class="fa-solid fa-clock-rotate-left text-sm"></i>
+              <span>سجل الحساب</span>
+            </button>
+            <button onclick="switchUserSubtab('apps')" id="user-subtab-btn-apps" class="user-subtab-btn pb-3 text-sm font-semibold flex items-center gap-2">
+              <i class="fa-solid fa-file-signature text-sm"></i>
+              <span>التقديمات (5)</span>
+            </button>
+          </div>
+
+          <!-- SUBTAB 1: الشخصيات (2) - Exact Screenshot 1 & 2 -->
+          <div id="user-subtab-content-characters" class="user-subtab-content grid grid-cols-1 lg:grid-cols-3 gap-8">
+            <!-- Left: شخصياتي (2/3 width) -->
+            <div class="lg:col-span-2 glass-panel rounded-3xl p-6 sm:p-8 border border-white/10">
+              <div class="mb-6">
+                <h3 class="text-xl font-black text-white mb-1">شخصياتي</h3>
+                <p class="text-xs text-gray-400">إدارة وعرض شخصياتك النشطة في اللعبة</p>
+              </div>
+
+              <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                <!-- Character 1: Eyad A.Alasmri (#2487) -->
+                <div onclick="openCharacterDetail('2487')" class="p-5 rounded-2xl bg-[#0b1222] border border-white/10 hover:border-indigo-500/50 hover:bg-[#0e162c] transition-all cursor-pointer group shadow-xl flex flex-col justify-between">
+                  <div class="flex items-center justify-between mb-6">
+                    <span class="px-2.5 py-1 rounded-lg bg-indigo-500/20 text-indigo-400 font-mono text-xs font-bold border border-indigo-500/30">#2487</span>
+                    <h4 class="font-bold text-white text-base group-hover:text-indigo-300 transition-colors">Eyad A.Alasmri</h4>
+                  </div>
+                  <div class="flex items-center justify-between text-xs text-gray-400 pt-3 border-t border-white/5">
+                    <span class="text-indigo-400 text-[11px] font-semibold group-hover:underline flex items-center gap-1">
+                      <span>عرض الملف الكامل</span>
+                      <i class="fa-solid fa-chevron-left text-[9px]"></i>
+                    </span>
+                    <span class="flex items-center gap-1.5"><i class="far fa-clock text-[10px]"></i> آخر ظهور: منذ يوم</span>
+                  </div>
+                </div>
+
+                <!-- Character 2: Eyad Rslan (#5599) -->
+                <div onclick="openCharacterDetail('5599')" class="p-5 rounded-2xl bg-[#0b1222] border border-white/10 hover:border-indigo-500/50 hover:bg-[#0e162c] transition-all cursor-pointer group shadow-xl flex flex-col justify-between">
+                  <div class="flex items-center justify-between mb-6">
+                    <span class="px-2.5 py-1 rounded-lg bg-indigo-500/20 text-indigo-400 font-mono text-xs font-bold border border-indigo-500/30">#5599</span>
+                    <h4 class="font-bold text-white text-base group-hover:text-indigo-300 transition-colors">Eyad Rslan</h4>
+                  </div>
+                  <div class="flex items-center justify-between text-xs text-gray-400 pt-3 border-t border-white/5">
+                    <span class="text-indigo-400 text-[11px] font-semibold group-hover:underline flex items-center gap-1">
+                      <span>عرض الملف الكامل</span>
+                      <i class="fa-solid fa-chevron-left text-[9px]"></i>
+                    </span>
+                    <span class="flex items-center gap-1.5"><i class="far fa-clock text-[10px]"></i> آخر ظهور: منذ أسبوع</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Right: معلومات الحساب (1/3 width) -->
+            <div class="space-y-6">
+              <div class="glass-panel rounded-3xl p-6 sm:p-7 border border-white/10 space-y-5">
+                <h3 class="text-lg font-bold text-white">معلومات الحساب</h3>
+
+                <!-- Serial Number -->
+                <div>
+                  <span class="text-xs text-gray-400 block mb-2">الرقم التسلسلي</span>
+                  <div class="flex items-center justify-between p-3 rounded-xl bg-black/50 border border-white/10 font-mono text-xs">
+                    <span id="user-serial-text" class="text-gray-200">CC49******************F852</span>
+                    <button onclick="toggleSerialMask()" title="إظهار / إخفاء السيريال" class="text-gray-400 hover:text-white p-1">
+                      <i id="user-serial-eye" class="fa-regular fa-eye"></i>
+                    </button>
+                  </div>
+                  <button onclick="handleChangeSerialPrompt()" class="w-full mt-2.5 py-2.5 rounded-xl bg-white/5 hover:bg-white/10 border border-white/10 text-xs text-gray-300 hover:text-white font-semibold transition-all flex items-center justify-center gap-2">
+                    <i class="fa-solid fa-gear text-[11px]"></i>
+                    <span>تغيير السيريال</span>
+                  </button>
+                </div>
+
+                <!-- 2FA -->
+                <div class="pt-4 border-t border-white/10">
+                  <div class="flex items-center justify-between mb-3">
+                    <span class="text-xs text-gray-400">المصادقة الثنائية</span>
+                    <span class="px-2.5 py-0.5 rounded-full text-[11px] font-bold bg-emerald-500/20 text-emerald-400 border border-emerald-500/30">مفعلة</span>
+                  </div>
+                  <div class="grid grid-cols-2 gap-2">
+                    <button onclick="showToast('رموز الاسترجاع', 'تم نسخ الرموز الاحتياطية لحسابك', 'info')" class="py-2 px-3 rounded-xl bg-white/5 hover:bg-white/10 border border-white/10 text-[11px] text-gray-300 font-semibold flex items-center justify-center gap-1.5 transition-all">
+                      <i class="fa-solid fa-key text-[10px]"></i>
+                      <span>رموز الاسترجاع</span>
+                    </button>
+                    <button onclick="showToast('تنبيه أمني', 'يرجى مراجعة الدعم الفني لإلغاء المصادقة الثنائية', 'info')" class="py-2 px-3 rounded-xl bg-rose-500/10 hover:bg-rose-500/20 border border-rose-500/20 text-[11px] text-rose-300 font-semibold flex items-center justify-center gap-1.5 transition-all">
+                      <i class="fa-solid fa-ban text-[10px]"></i>
+                      <span>إلغاء التفعيل</span>
+                    </button>
+                  </div>
+                </div>
+
+                <!-- Timestamps -->
+                <div class="pt-4 border-t border-white/10 space-y-3 text-xs">
+                  <div class="flex items-center justify-between text-gray-400">
+                    <span>آخر نشاط</span>
+                    <span class="font-mono text-gray-200">Oct 9, 2026, 02:49 AM</span>
+                  </div>
+                  <div class="flex items-center justify-between text-gray-400">
+                    <span>عضو منذ</span>
+                    <span class="font-mono text-gray-200">Feb 9, 2026, 12:29 PM</span>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Anti-cheat widget -->
+              <div class="glass-panel rounded-3xl p-6 border border-white/10">
+                <h4 class="text-sm font-bold text-white mb-1 flex items-center gap-2">
+                  <i class="fa-solid fa-shield-halved text-emerald-400 text-xs"></i>
+                  <span>تنبيهات مكافحة الغش</span>
+                </h4>
+                <p class="text-[11px] text-gray-400 mb-4 leading-relaxed">يعرض مستوى التنبيهات المسجلة على حسابك من نظام الحماية أثناء اللعب</p>
+                
+                <div class="p-4 rounded-2xl bg-emerald-950/20 border border-emerald-500/30 flex items-center justify-between">
+                  <div>
+                    <span class="text-[10px] text-gray-400 block mb-0.5">مستوى الخطورة</span>
+                    <span class="text-emerald-400 font-black text-sm flex items-center gap-1.5">
+                      <i class="fa-solid fa-circle-check text-xs"></i>
+                      <span>لا تنبيهات</span>
+                    </span>
+                  </div>
+                  <i class="fa-solid fa-shield text-emerald-500/40 text-2xl"></i>
+                </div>
+                <span class="text-[10px] text-gray-500 block text-center mt-2.5">لا توجد تنبيهات مسجلة. حسابك نظيف.</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- SUBTAB 2: سجل الحساب - Exact Screenshot 4 -->
+          <div id="user-subtab-content-logs" class="user-subtab-content hidden">
+            <div class="glass-panel rounded-3xl p-6 sm:p-8 border border-white/10">
+              <div class="mb-6">
+                <h3 class="text-xl font-black text-white mb-1">سجل النشاط</h3>
+                <p class="text-xs text-gray-400">عرض السجل الإداري لحسابك</p>
+              </div>
+
+              <div class="overflow-x-auto">
+                <table class="w-full text-right text-xs">
+                  <thead>
+                    <tr class="border-b border-white/10 text-gray-400 pb-3">
+                      <th class="py-3 px-4 font-semibold">الإجراء</th>
+                      <th class="py-3 px-4 font-semibold">السبب</th>
+                      <th class="py-3 px-4 font-semibold">بواسطة</th>
+                      <th class="py-3 px-4 font-semibold">التاريخ</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td colspan="4" class="py-20 text-center text-gray-400">
+                        <div class="w-16 h-16 rounded-2xl bg-white/5 border border-white/10 flex items-center justify-center mx-auto mb-3 text-gray-500 text-2xl">
+                          <i class="fa-solid fa-shield"></i>
+                        </div>
+                        <span class="text-sm font-semibold text-gray-300 block mb-1">سجل نظيف، لا يوجد تاريخ.</span>
+                        <span class="text-xs text-gray-500">حسابك لا يحتوي على أي عقوبات أو مخالفات إدارية مسجلة.</span>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+
+          <!-- SUBTAB 3: التقديمات (5) - Exact Screenshot 3 -->
+          <div id="user-subtab-content-apps" class="user-subtab-content hidden">
+            <div class="glass-panel rounded-3xl p-6 sm:p-8 border border-white/10">
+              <div class="mb-6">
+                <h3 class="text-xl font-black text-white mb-1">حالة التقديمات</h3>
+                <p class="text-xs text-gray-400">تتبع تقديمات القائمة البيضاء ووظائفك</p>
+              </div>
+
+              <div class="space-y-4">
+                <!-- App 1: تقديم الدعم الفني (Approved with notes) -->
+                <div class="p-5 rounded-2xl bg-[#0b1222] border border-emerald-500/30 space-y-4 shadow-lg">
+                  <div class="flex items-center justify-between flex-wrap gap-2">
+                    <span class="px-3 py-1 rounded-full text-xs font-bold bg-emerald-500/20 text-emerald-400 border border-emerald-500/30">approved</span>
+                    <div class="text-right">
+                      <h4 class="font-bold text-white text-base">تقديم الدعم الفني</h4>
+                      <span class="text-[11px] text-gray-400 font-mono">Sep 27, 2026, 01:58 PM • # المرجع: SUB-1932</span>
+                    </div>
+                  </div>
+
+                  <!-- Notes Box -->
+                  <div class="p-4 rounded-xl bg-black/40 border border-white/5 text-xs text-gray-300 space-y-2">
+                    <div class="flex items-center gap-2 text-indigo-400 font-bold">
+                      <i class="fa-regular fa-message"></i>
+                      <span>ملاحظات</span>
+                    </div>
+                    <p class="leading-relaxed">
+                      تم قبول تقديمك، قم بالتوجه للرابط التالي: <a href="https://discord.gg/tajgkjld4" target="_blank" class="text-indigo-400 hover:underline font-mono">https://discord.gg/tajgkjld4</a>
+                    </p>
+                    <p class="text-rose-400 text-[11px] pt-1 border-t border-white/5">
+                      ملاحظة : في حال مشاركة الرابط أو الدخول بحساب ديسكورد آخر سيتم إدراجك في قائمة البلاك ليست.
+                    </p>
+                  </div>
+                </div>
+
+                <!-- App 2: تقديم الدعم الفني (Approved) -->
+                <div class="p-5 rounded-2xl bg-[#0b1222] border border-emerald-500/30 space-y-4 shadow-lg">
+                  <div class="flex items-center justify-between flex-wrap gap-2">
+                    <span class="px-3 py-1 rounded-full text-xs font-bold bg-emerald-500/20 text-emerald-400 border border-emerald-500/30">approved</span>
+                    <div class="text-right">
+                      <h4 class="font-bold text-white text-base">تقديم الدعم الفني</h4>
+                      <span class="text-[11px] text-gray-400 font-mono">Aug 25, 2026, 12:04 PM • # المرجع: SUB-1820</span>
+                    </div>
+                  </div>
+
+                  <div class="p-4 rounded-xl bg-black/40 border border-white/5 text-xs text-gray-300 space-y-2">
+                    <div class="flex items-center gap-2 text-indigo-400 font-bold">
+                      <i class="fa-regular fa-message"></i>
+                      <span>ملاحظات</span>
+                    </div>
+                    <p class="leading-relaxed">
+                      تم قبول تقديمك، قم بالتوجه للرابط التالي: <a href="https://discord.gg/PxRRawJw" target="_blank" class="text-indigo-400 hover:underline font-mono">https://discord.gg/PxRRawJw</a>
+                    </p>
+                  </div>
+                </div>
+
+                <!-- App 3: تقديم الدعم الفني (Rejected) -->
+                <div class="p-5 rounded-2xl bg-[#0b1222] border border-rose-500/30 flex items-center justify-between flex-wrap gap-2 shadow-lg">
+                  <span class="px-3 py-1 rounded-full text-xs font-bold bg-rose-500/20 text-rose-400 border border-rose-500/30">rejected</span>
+                  <div class="text-right">
+                    <h4 class="font-bold text-white text-base">تقديم الدعم الفني</h4>
+                    <span class="text-[11px] text-gray-400 font-mono">Jul 27, 2026, 04:53 AM • # المرجع: SUB-1595</span>
+                  </div>
+                </div>
+
+                <!-- App 4: تقديم الدعم الفني (In progress) -->
+                <div class="p-5 rounded-2xl bg-[#0b1222] border border-amber-500/30 flex items-center justify-between flex-wrap gap-2 shadow-lg">
+                  <span class="px-3 py-1 rounded-full text-xs font-bold bg-amber-500/20 text-amber-400 border border-amber-500/30">in progress</span>
+                  <div class="text-right">
+                    <h4 class="font-bold text-white text-base">تقديم الدعم الفني</h4>
+                    <span class="text-[11px] text-gray-400 font-mono">أبدأ • # المرجع: SUB-1496</span>
+                  </div>
+                </div>
+
+                <!-- App 5: بطولة التيمات الكبرى (In progress) -->
+                <div class="p-5 rounded-2xl bg-[#0b1222] border border-amber-500/30 flex items-center justify-between flex-wrap gap-2 shadow-lg">
+                  <span class="px-3 py-1 rounded-full text-xs font-bold bg-amber-500/20 text-amber-400 border border-amber-500/30">in progress</span>
+                  <div class="text-right">
+                    <h4 class="font-bold text-white text-base">بطولة التيمات الكبرى</h4>
+                    <span class="text-[11px] text-gray-400 font-mono">أبدأ • # المرجع: SUB-1073</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+        <!-- VIEW B: CHARACTER DETAILS VIEW (wnashtime.net/user/characters/:id) -->
+        <div id="character-detail-view" class="hidden">
+          <!-- Back Button & Fast Switcher Header -->
+          <div class="flex items-center justify-between pb-4 mb-6 flex-wrap gap-4">
+            <button onclick="backToUserProfile()" class="px-4 py-2.5 rounded-xl bg-white/5 hover:bg-white/10 text-gray-300 hover:text-white border border-white/10 text-xs font-bold transition-all flex items-center gap-2">
+              <i class="fa-solid fa-arrow-right text-xs"></i>
+              <span>العودة إلى الملف الشخصي</span>
+            </button>
+            <div class="flex items-center gap-2">
+              <button onclick="switchCharacterById('2487')" id="char-switcher-btn-2487" class="px-3.5 py-1.5 rounded-xl bg-indigo-600 text-white text-xs font-bold shadow-lg transition-all">Eyad A.Alasmri (#2487)</button>
+              <button onclick="switchCharacterById('5599')" id="char-switcher-btn-5599" class="px-3.5 py-1.5 rounded-xl bg-white/5 hover:bg-white/10 text-gray-300 text-xs font-semibold transition-all">Eyad Rslan (#5599)</button>
+            </div>
+          </div>
+
+          <!-- Character Hero Banner -->
+          <div class="user-profile-header-bg rounded-3xl p-8 sm:p-10 border border-white/10 mb-8 text-center relative overflow-hidden shadow-2xl">
+            <span id="cdetail-badge-id" class="px-3.5 py-1 rounded-full bg-indigo-500/20 text-indigo-400 border border-indigo-500/30 text-xs font-mono font-bold inline-block mb-3">
+              الشخصية #000002487
+            </span>
+            <h1 id="cdetail-name" class="text-3xl sm:text-5xl font-black text-white tracking-wide mb-3">Eyad A.Alasmri</h1>
+            <span id="cdetail-lastseen" class="text-xs text-gray-400 block"><i class="far fa-clock ml-1"></i> آخر تسجيل دخول: منذ يوم</span>
+          </div>
+
+          <!-- 2-Column Grid Layout matching Screenshots 5, 6, 7, 8 -->
+          <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+            
+            <!-- Column 1 (Left in RTL): الإحصائيات السريعة + الإشعارات (50) -->
+            <div class="space-y-8">
+              <!-- Card 1: الإحصائيات السريعة -->
+              <div class="glass-panel rounded-3xl p-6 sm:p-8 border border-white/10 shadow-xl">
+                <h3 class="text-base font-bold text-white mb-5">الإحصائيات السريعة</h3>
+                
+                <div class="mb-6">
+                  <span class="text-xs text-gray-400 block mb-1">إجمالي الأصول</span>
+                  <span id="cdetail-assets-total" class="text-3xl sm:text-4xl font-black text-indigo-400 font-mono">$13,174</span>
+                </div>
+
+                <div class="grid grid-cols-2 gap-4 pt-5 border-t border-white/5">
+                  <div class="p-4 rounded-2xl bg-black/40 border border-white/5">
+                    <span class="text-[11px] text-gray-400 block mb-1">النقد</span>
+                    <span id="cdetail-cash" class="text-lg font-black text-emerald-400 font-mono">$4,474</span>
+                  </div>
+                  <div class="p-4 rounded-2xl bg-black/40 border border-white/5">
+                    <span class="text-[11px] text-gray-400 block mb-1">البنك</span>
+                    <span id="cdetail-bank" class="text-lg font-black text-sky-400 font-mono">$8,700</span>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Card 2: الإشعارات (50) -->
+              <div class="glass-panel rounded-3xl p-6 sm:p-8 border border-white/10 shadow-xl">
+                <div class="flex items-center justify-between pb-4 border-b border-white/10 mb-5">
+                  <h3 class="text-base font-bold text-white flex items-center gap-2">
+                    <i class="fa-regular fa-bell text-indigo-400"></i>
+                    <span>الإشعارات (<span id="cdetail-notifs-count">50</span>)</span>
+                  </h3>
+                </div>
+
+                <!-- Scrollable List of notifications with 'جديد' badge -->
+                <div id="cdetail-notifs-list" class="space-y-3 max-h-[480px] overflow-y-auto pr-1 custom-scrollbar">
+                  <!-- Injected via JavaScript -->
+                </div>
+              </div>
+            </div>
+
+            <!-- Column 2 (Right in RTL): المعلومات الشخصية + إحصائيات اللعبة + المركبات + الممتلكات -->
+            <div class="space-y-8">
+              <!-- Card 1: المعلومات الشخصية -->
+              <div class="glass-panel rounded-3xl p-6 sm:p-8 border border-white/10 shadow-xl">
+                <h3 class="text-base font-bold text-white mb-6 flex items-center gap-2">
+                  <i class="fa-regular fa-id-card text-indigo-400"></i>
+                  <span>المعلومات الشخصية</span>
+                </h3>
+
+                <div class="grid grid-cols-2 gap-y-5 gap-x-6 text-xs">
+                  <div>
+                    <span class="text-gray-400 block mb-1">الرقم الشخصي</span>
+                    <span id="cdetail-personal-id" class="font-mono font-bold text-white text-sm">000002487</span>
+                  </div>
+                  <div>
+                    <span class="text-gray-400 block mb-1">الجنس</span>
+                    <span id="cdetail-gender" class="font-bold text-white">Male ♂</span>
+                  </div>
+                  <div>
+                    <span class="text-gray-400 block mb-1">تاريخ الميلاد</span>
+                    <span id="cdetail-birth" class="font-bold text-white">28 سبتمبر 1992</span>
+                  </div>
+                  <div>
+                    <span class="text-gray-400 block mb-1">العمر</span>
+                    <span id="cdetail-age" class="font-bold text-white">34 سنة</span>
+                  </div>
+                  <div>
+                    <span class="text-gray-400 block mb-1">البصمة</span>
+                    <span id="cdetail-fingerprint" class="font-mono font-bold text-indigo-400">HL1VQNF CKR</span>
+                  </div>
+                  <div>
+                    <span class="text-gray-400 block mb-1">الجنسية</span>
+                    <span id="cdetail-nationality" class="font-bold text-white flex items-center gap-1.5">
+                      <i class="fa-solid fa-earth-americas text-xs text-gray-400"></i>
+                      <span>Los Santos</span>
+                    </span>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Card 2: إحصائيات اللعبة -->
+              <div class="glass-panel rounded-3xl p-6 sm:p-8 border border-white/10 shadow-xl">
+                <h3 class="text-base font-bold text-white mb-6 flex items-center gap-2">
+                  <i class="fa-solid fa-chart-simple text-indigo-400"></i>
+                  <span>إحصائيات اللعبة</span>
+                </h3>
+
+                <div class="grid grid-cols-2 gap-y-5 gap-x-6 text-xs">
+                  <div>
+                    <span class="text-gray-400 block mb-1">وقت اللعب</span>
+                    <span id="cdetail-playtime" class="font-bold text-white">775 ساعة و 6 دقيقة</span>
+                  </div>
+                  <div>
+                    <span class="text-gray-400 block mb-1">المستوى</span>
+                    <span id="cdetail-level" class="font-mono font-bold text-amber-400 text-sm">26</span>
+                  </div>
+                  <div>
+                    <span class="text-gray-400 block mb-1">النقد</span>
+                    <span id="cdetail-game-cash" class="font-mono font-bold text-emerald-400 text-sm">$4,474</span>
+                  </div>
+                  <div>
+                    <span class="text-gray-400 block mb-1">الوظيفة</span>
+                    <span id="cdetail-job" class="font-bold text-white flex items-center gap-1.5">
+                      <i id="cdetail-job-icon" class="fa-solid fa-shirt text-xs text-gray-400"></i>
+                      <span id="cdetail-job-text">Textile</span>
+                    </span>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Card 3: المركبات -->
+              <div class="glass-panel rounded-3xl p-6 sm:p-8 border border-white/10 shadow-xl">
+                <h3 class="text-base font-bold text-white mb-5 flex items-center gap-2">
+                  <i class="fa-solid fa-car text-indigo-400"></i>
+                  <span>المركبات (<span id="cdetail-vehicles-count">4</span>)</span>
+                </h3>
+
+                <div id="cdetail-vehicles-list" class="space-y-3">
+                  <!-- Injected via JavaScript -->
+                </div>
+              </div>
+
+              <!-- Card 4: الممتلكات -->
+              <div class="glass-panel rounded-3xl p-6 sm:p-8 border border-white/10 shadow-xl">
+                <h3 class="text-base font-bold text-white mb-3 flex items-center gap-2">
+                  <i class="fa-solid fa-building text-indigo-400"></i>
+                  <span>الممتلكات (0)</span>
+                </h3>
+                <p class="text-xs text-gray-500 py-3 text-center">لا توجد ممتلكات مملوكة</p>
+              </div>
+
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ==================== FOOTER ==================== -->
+  <footer class="glass-nav border-t border-white/10 py-8 px-6 sm:px-8 mt-12">
+    <div class="max-w-[1550px] mx-auto flex flex-col md:flex-row items-center justify-between gap-6">
+      <div class="flex items-center gap-3">
+        <div class="w-8 h-8 rounded-lg bg-white/10 flex items-center justify-center">
+          <svg class="w-5 h-5 text-white" viewBox="0 0 48 48" fill="none">
+            <path d="M24 4L6 44H15L19 34H29L33 44H42L24 4ZM24 16L27 27H21L24 16Z" fill="currentColor"/>
+          </svg>
+        </div>
+        <span class="font-bold text-sm text-gray-300">© 2026 Al-AzayzahRP - جميع الحقوق محفوظة لـ Eyad ومجتمع العزايزة رول بلاي MTA:SA</span>
+      </div>
+
+      <div class="flex items-center gap-4 text-gray-400 text-lg">
+        <a href="#discord" onclick="switchTab('discord')" class="w-9 h-9 rounded-xl bg-white/5 hover:bg-indigo-600 hover:text-white flex items-center justify-center transition-all"><i class="fa-brands fa-discord"></i></a>
+        <a href="https://youtube.com" target="_blank" class="w-9 h-9 rounded-xl bg-white/5 hover:bg-rose-600 hover:text-white flex items-center justify-center transition-all"><i class="fa-brands fa-youtube"></i></a>
+        <a href="https://x.com" target="_blank" class="w-9 h-9 rounded-xl bg-white/5 hover:bg-sky-500 hover:text-white flex items-center justify-center transition-all"><i class="fa-brands fa-twitter"></i></a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ==================== MODALS ==================== -->
+
+  <!-- 1. Play Now Modal with Real MTA Connection -->
+  <div id="play-now-modal" class="modal-overlay">
+    <div class="modal-box p-6 sm:p-8">
+      <div class="flex items-center justify-between pb-4 border-b border-white/10 mb-6">
+        <div class="flex items-center gap-3">
+          <div class="w-10 h-10 rounded-xl bg-indigo-500/20 text-indigo-400 flex items-center justify-center text-lg">
+            <i class="fa-solid fa-gamepad"></i>
+          </div>
+          <div>
+            <h3 class="font-black text-lg text-white">الدخول المباشر لسيرفر Al-AzayzahRP</h3>
+            <span class="text-xs text-gray-400">MTA:SA Server Quick Connect</span>
+          </div>
+        </div>
+        <button onclick="closePlayNowModal()" class="w-8 h-8 rounded-lg bg-white/5 hover:bg-white/10 flex items-center justify-center text-gray-400 hover:text-white">
+          <i class="fa-solid fa-xmark"></i>
+        </button>
+      </div>
+
+      <div class="space-y-4 text-xs text-gray-300 mb-6">
+        <div class="p-4 rounded-xl bg-white/5 border border-white/5">
+          <span class="font-bold text-white block mb-1">عنوان الآي بي الرسمي لسيرفر Al-AzayzahRP:</span>
+          <div class="flex items-center justify-between bg-black/60 p-3 rounded-lg border border-white/10 font-mono text-indigo-400 text-sm mt-2">
+            <span id="modal-server-ip-text">play.al-azayzahrp.net:22003</span>
+            <button onclick="copyServerIP()" class="px-3 py-1 rounded bg-indigo-600 hover:bg-indigo-500 text-white text-xs font-bold font-sans">نسخ الآي بي</button>
+          </div>
+        </div>
+
+        <div class="p-4 rounded-xl bg-white/5 border border-white/5 flex gap-3">
+          <span class="w-6 h-6 rounded-full bg-indigo-600 text-white flex items-center justify-center font-bold flex-shrink-0">1</span>
+          <div>
+            <span class="font-bold text-white block mb-0.5">افتح لعبة MTA:SA</span>
+            <span>اضغط على زر Quick Connect في القائمة الرئيسية داخل اللعبة.</span>
+          </div>
+        </div>
+
+        <div class="p-4 rounded-xl bg-white/5 border border-white/5 flex gap-3">
+          <span class="w-6 h-6 rounded-full bg-indigo-600 text-white flex items-center justify-center font-bold flex-shrink-0">2</span>
+          <div>
+            <span class="font-bold text-white block mb-0.5">اتصال فوري من المتصفح</span>
+            <span>يمكنك الضغط على الزر أدناه لتشغيل اللعبة والدخول التلقائي مباشرة عبر رابط البرتوكول:</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="flex items-center gap-3">
+        <a id="modal-server-connect-link" href="mtasa://play.al-azayzahrp.net:22003" class="flex-1 py-3 rounded-xl btn-primary-glow font-bold text-xs text-center">
+          دخول مباشر للعبة (Connect Now)
+        </a>
+        <button onclick="closePlayNowModal()" class="px-5 py-3 rounded-xl bg-white/10 text-white text-xs font-semibold">إغلاق</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- 2. Trailer Modal -->
+  <div id="trailer-modal" class="modal-overlay">
+    <div class="modal-box p-6 max-w-2xl">
+      <div class="flex items-center justify-between pb-3 border-b border-white/10 mb-4">
+        <span class="font-bold text-sm text-white flex items-center gap-2">
+          <i class="fa-brands fa-youtube text-rose-500"></i>
+          عرض Al-AzayzahRP الترويجي (Official Trailer)
+        </span>
+        <button onclick="closeTrailerModal()" class="w-8 h-8 rounded-lg bg-white/5 hover:bg-white/10 flex items-center justify-center text-gray-400 hover:text-white">
+          <i class="fa-solid fa-xmark"></i>
+        </button>
+      </div>
+      <div class="aspect-video w-full rounded-2xl bg-black overflow-hidden relative border border-white/10">
+        <iframe class="w-full h-full" src="https://www.youtube-nocookie.com/embed/dQw4w9WgXcQ?autoplay=0" title="Trailer" frameborder="0" allowfullscreen></iframe>
+      </div>
+    </div>
+  </div>
+
+  <!-- 3. Auction Detail & Bidding Modal -->
+  <div id="auction-detail-modal" class="modal-overlay">
+    <div class="modal-box p-6 sm:p-8 max-w-xl">
+      <div class="flex items-center justify-between pb-4 border-b border-white/10 mb-6">
+        <div>
+          <h3 id="modal-auction-title" class="font-bold text-lg text-white">تفاصيل المزاد</h3>
+          <span class="text-xs text-gray-400">البائع: <span id="modal-auction-seller" class="text-indigo-400 font-semibold"></span></span>
+        </div>
+        <button onclick="closeAuctionDetail()" class="w-8 h-8 rounded-lg bg-white/5 hover:bg-white/10 flex items-center justify-center text-gray-400 hover:text-white">
+          <i class="fa-solid fa-xmark"></i>
+        </button>
+      </div>
+
+      <div class="h-56 w-full rounded-2xl overflow-hidden mb-6 bg-slate-950 border border-white/10">
+        <img id="modal-auction-img" src="" alt="Auction Item" class="w-full h-full object-cover">
+      </div>
+
+      <p id="modal-auction-desc" class="text-xs text-gray-300 leading-relaxed mb-6"></p>
+
+      <div class="grid grid-cols-3 gap-3 p-3.5 rounded-2xl bg-white/5 border border-white/10 mb-6 text-center">
+        <div>
+          <span class="text-[10px] text-gray-400 block mb-0.5">السعر الحالي</span>
+          <span id="modal-auction-price" class="font-black text-indigo-400 text-sm"></span>
+        </div>
+        <div>
+          <span class="text-[10px] text-gray-400 block mb-0.5">عدد المزايدات</span>
+          <span id="modal-auction-bids" class="font-bold text-white text-sm"></span>
+        </div>
+        <div>
+          <span class="text-[10px] text-gray-400 block mb-0.5">الوقت المتبقي</span>
+          <span id="modal-auction-time" class="font-bold text-amber-400 text-sm"></span>
+        </div>
+      </div>
+
+      <div class="space-y-3">
+        <label class="block text-xs font-semibold text-gray-300">أدخل قيمة مزايدتك الجديدة ($)</label>
+        <div class="flex gap-3">
+          <input 
+            id="bid-amount-input" 
+            type="number" 
+            step="10000"
+            class="flex-1 px-4 py-3 rounded-xl bg-black/40 border border-white/10 text-white font-mono text-base focus:outline-none focus:border-indigo-500"
+          >
+          <button 
+            onclick="submitBid()"
+            class="px-6 py-3 rounded-xl btn-primary-glow font-bold text-xs"
+          >
+            تأكيد المزايدة
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 4. Add Auction Modal -->
+  <div id="add-auction-modal" class="modal-overlay">
+    <div class="modal-box p-6 sm:p-8 max-w-lg">
+      <div class="flex items-center justify-between pb-4 border-b border-white/10 mb-6">
+        <h3 class="font-bold text-lg text-white">إضافة مزاد جديد</h3>
+        <button onclick="closeAddAuctionModal()" class="w-8 h-8 rounded-lg bg-white/5 hover:bg-white/10 flex items-center justify-center text-gray-400 hover:text-white">
+          <i class="fa-solid fa-xmark"></i>
+        </button>
+      </div>
+
+      <form onsubmit="submitNewAuction(event)" class="space-y-4">
+        <div>
+          <label class="block text-xs font-semibold text-gray-300 mb-1.5">عنوان السلعة أو الغرض</label>
+          <input id="new-auc-title" required type="text" placeholder="مثال: نيسان سكايلاين R34 معدلة" class="w-full px-4 py-2.5 rounded-xl bg-black/40 border border-white/10 text-white text-xs focus:outline-none focus:border-indigo-500">
+        </div>
+
+        <div class="grid grid-cols-2 gap-4">
+          <div>
+            <label class="block text-xs font-semibold text-gray-300 mb-1.5">الفئة</label>
+            <select id="new-auc-cat" class="w-full px-4 py-2.5 rounded-xl bg-black/40 border border-white/10 text-gray-200 text-xs focus:outline-none focus:border-indigo-500">
+              <option value="cars">سيارات</option>
+              <option value="weapons">أسلحة</option>
+              <option value="estates">عقارات</option>
+              <option value="special">مميز</option>
+            </select>
+          </div>
+          <div>
+            <label class="block text-xs font-semibold text-gray-300 mb-1.5">سعر البداية ($)</label>
+            <input id="new-auc-price" required type="number" step="10000" placeholder="500000" class="w-full px-4 py-2.5 rounded-xl bg-black/40 border border-white/10 text-white text-xs focus:outline-none focus:border-indigo-500">
+          </div>
+        </div>
+
+        <div>
+          <label class="block text-xs font-semibold text-gray-300 mb-1.5">مدة المزاد</label>
+          <select id="new-auc-time" class="w-full px-4 py-2.5 rounded-xl bg-black/40 border border-white/10 text-gray-200 text-xs focus:outline-none focus:border-indigo-500">
+            <option value="24 ساعة">24 ساعة</option>
+            <option value="3 أيام">3 أيام</option>
+            <option value="7 أيام">7 أيام</option>
+            <option value="14 يوم">14 يوم</option>
+          </select>
+        </div>
+
+        <div>
+          <label class="block text-xs font-semibold text-gray-300 mb-1.5">رابط صورة السلعة (اختياري - يمكنك تركه فارغاً)</label>
+          <input id="new-auc-img" type="url" placeholder="https://... رابط صورة السيارة أو السلاح" class="w-full px-4 py-2.5 rounded-xl bg-black/40 border border-white/10 text-white text-xs focus:outline-none focus:border-indigo-500">
+        </div>
+
+        <div>
+          <label class="block text-xs font-semibold text-gray-300 mb-1.5">الوصف والمواصفات</label>
+          <textarea id="new-auc-desc" rows="3" placeholder="مواصفات التعديل، سبب البيع، وغيرها..." class="w-full px-4 py-2.5 rounded-xl bg-black/40 border border-white/10 text-white text-xs focus:outline-none focus:border-indigo-500"></textarea>
+        </div>
+
+        <button type="submit" class="w-full py-3 rounded-xl btn-primary-glow font-bold text-xs mt-2">نشر وحفظ المزاد الآن</button>
+      </form>
+    </div>
+  </div>
+
+  <!-- 5. Application Form Modal -->
+  <div id="application-form-modal" class="modal-overlay">
+    <div class="modal-box p-6 sm:p-8 max-w-lg">
+      <div class="flex items-center justify-between pb-4 border-b border-white/10 mb-6">
+        <div>
+          <h3 id="app-modal-title" class="font-bold text-lg text-white">تقديم طلب</h3>
+          <span id="app-modal-status" class="inline-block mt-1"></span>
+        </div>
+        <button onclick="closeAppForm()" class="w-8 h-8 rounded-lg bg-white/5 hover:bg-white/10 flex items-center justify-center text-gray-400 hover:text-white">
+          <i class="fa-solid fa-xmark"></i>
+        </button>
+      </div>
+
+      <div id="app-closed-notice" class="hidden text-center py-8">
+        <i class="fa-solid fa-lock text-rose-500 text-4xl mb-3"></i>
+        <h4 class="font-bold text-base text-white mb-2">هذا التقديم مغلق حالياً</h4>
+        <p class="text-xs text-gray-400">سيتم فتح باب التقديم في المواسم القادمة في سيرفر Al-AzayzahRP. ترقبوا الإعلانات في الديسكورد.</p>
+      </div>
+
+      <form id="app-form-content" onsubmit="submitApplication(event)" class="space-y-4">
+        <div>
+          <label class="block text-xs font-semibold text-gray-300 mb-1.5">اسم حساب الديسكورد و الآيدي</label>
+          <input id="app-discord-input" required type="text" value="Eyad#2026" class="w-full px-4 py-2.5 rounded-xl bg-black/40 border border-white/10 text-white text-xs focus:outline-none focus:border-indigo-500">
+        </div>
+
+        <div>
+          <label class="block text-xs font-semibold text-gray-300 mb-1.5">اسم شخصيتك في الرول بلاي</label>
+          <input id="app-char-input" required type="text" placeholder="مثال: إياد الحربي" class="w-full px-4 py-2.5 rounded-xl bg-black/40 border border-white/10 text-white text-xs focus:outline-none focus:border-indigo-500">
+        </div>
+
+        <div>
+          <label class="block text-xs font-semibold text-gray-300 mb-1.5">خبراتك السابقة في الـ MTA Roleplay</label>
+          <textarea id="app-exp-input" required rows="3" placeholder="اذكر السيرفرات السابقة والمناصب التي شغلتها..." class="w-full px-4 py-2.5 rounded-xl bg-black/40 border border-white/10 text-white text-xs focus:outline-none focus:border-indigo-500"></textarea>
+        </div>
+
+        <button type="submit" class="w-full py-3 rounded-xl btn-primary-glow font-bold text-xs mt-2">إرسال طلب التقديم</button>
+      </form>
+    </div>
+  </div>
+
+  <!-- 6. Faction Details Modal -->
+  <div id="faction-modal" class="modal-overlay">
+    <div class="modal-box p-6 sm:p-8 max-w-lg">
+      <div class="flex items-center justify-between pb-4 border-b border-white/10 mb-6">
+        <div class="flex items-center gap-3">
+          <div class="w-12 h-12 rounded-2xl bg-white/5 border border-white/10 flex items-center justify-center">
+            <i id="faction-modal-icon" class="text-indigo-400 text-2xl"></i>
+          </div>
+          <div>
+            <h3 id="faction-modal-title" class="font-bold text-lg text-white"></h3>
+            <span id="faction-modal-type" class="text-xs text-indigo-400 font-semibold"></span>
+          </div>
+        </div>
+        <button onclick="closeFactionModal()" class="w-8 h-8 rounded-lg bg-white/5 hover:bg-white/10 flex items-center justify-center text-gray-400 hover:text-white">
+          <i class="fa-solid fa-xmark"></i>
+        </button>
+      </div>
+
+      <div class="p-4 rounded-xl bg-white/5 border border-white/5 mb-4">
+        <span class="text-xs text-gray-400 block mb-1">القيادة الإدارية</span>
+        <span id="faction-modal-leader" class="font-bold text-white text-sm"></span>
+      </div>
+
+      <div class="mb-6">
+        <span class="text-xs text-gray-400 block mb-1">المهام والمسؤوليات</span>
+        <p id="faction-modal-desc" class="text-xs text-gray-300 leading-relaxed"></p>
+      </div>
+
+      <div class="flex gap-3">
+        <button onclick="closeFactionModal(); switchTab('applications');" class="flex-1 py-3 rounded-xl btn-primary-glow font-bold text-xs">
+          تقديم على هذا القطاع
+        </button>
+        <button onclick="closeFactionModal()" class="px-5 py-3 rounded-xl bg-white/10 text-white text-xs font-semibold">إغلاق</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- 7. Add Rule Modal -->
+  <div id="add-rule-modal" class="modal-overlay">
+    <div class="modal-box p-6 sm:p-8 max-w-lg">
+      <div class="flex items-center justify-between pb-4 border-b border-white/10 mb-6">
+        <div>
+          <h3 class="font-bold text-lg text-white">إضافة بند أو قانون جديد</h3>
+          <span class="text-xs text-indigo-400">سيتم حفظ القانون مباشرة في هذا القسم لجميع الزوار</span>
+        </div>
+        <button onclick="closeAddRuleModal()" class="w-8 h-8 rounded-lg bg-white/5 hover:bg-white/10 flex items-center justify-center text-gray-400 hover:text-white">
+          <i class="fa-solid fa-xmark"></i>
+        </button>
+      </div>
+
+      <form onsubmit="submitNewRule(event)" class="space-y-4">
+        <div>
+          <label class="block text-xs font-semibold text-gray-300 mb-1.5">عنوان البند أو المخالفة</label>
+          <input id="new-rule-title" required type="text" placeholder="مثال: منع سرقة أو استغلال مركبات الطوارئ" class="w-full px-4 py-2.5 rounded-xl bg-black/40 border border-white/10 text-white text-xs focus:outline-none focus:border-indigo-500">
+        </div>
+
+        <div>
+          <label class="block text-xs font-semibold text-gray-300 mb-1.5">نص وتفاصيل القانون / العقوبة</label>
+          <textarea id="new-rule-desc" required rows="3" placeholder="اشرح تفاصيل القانون بالتفصيل والعقوبة المترتبة على مخالفته..." class="w-full px-4 py-2.5 rounded-xl bg-black/40 border border-white/10 text-white text-xs focus:outline-none focus:border-indigo-500"></textarea>
+        </div>
+
+        <button type="submit" class="w-full py-3 rounded-xl btn-primary-glow font-bold text-xs mt-2">
+          إضافة وحفظ القانون فوراً
+        </button>
+      </form>
+    </div>
+  </div>
+
+  <!-- 8. Add Faction News Modal -->
+  <div id="add-news-modal" class="modal-overlay">
+    <div class="modal-box p-6 sm:p-8 max-w-lg">
+      <div class="flex items-center justify-between pb-4 border-b border-white/10 mb-6">
+        <div>
+          <h3 class="font-bold text-lg text-white">نشر بيان أو خبر رسمي للقطاع</h3>
+          <span class="text-xs text-amber-400">سيتم نشر الخبر وحفظه في تبويب الأخبار التابع للقطاع</span>
+        </div>
+        <button onclick="closeAddNewsModal()" class="w-8 h-8 rounded-lg bg-white/5 hover:bg-white/10 flex items-center justify-center text-gray-400 hover:text-white">
+          <i class="fa-solid fa-xmark"></i>
+        </button>
+      </div>
+
+      <form onsubmit="submitNewFactionNews(event)" class="space-y-4">
+        <div>
+          <label class="block text-xs font-semibold text-gray-300 mb-1.5">عنوان الخبر أو البيان</label>
+          <input id="new-news-title" required type="text" placeholder="مثال: [عاجل]: افتتاح مركز العمليات الجديد..." class="w-full px-4 py-2.5 rounded-xl bg-black/40 border border-white/10 text-white text-xs focus:outline-none focus:border-amber-500">
+        </div>
+
+        <div class="grid grid-cols-2 gap-3">
+          <div>
+            <label class="block text-xs font-semibold text-gray-300 mb-1.5">الكاتب / المصدر</label>
+            <input id="new-news-author" required type="text" value="Eyad (المؤسس)" class="w-full px-4 py-2.5 rounded-xl bg-black/40 border border-white/10 text-white text-xs focus:outline-none focus:border-amber-500">
+          </div>
+          <div>
+            <label class="block text-xs font-semibold text-gray-300 mb-1.5">التوقيت</label>
+            <input id="new-news-time" type="text" value="الآن" class="w-full px-4 py-2.5 rounded-xl bg-black/40 border border-white/10 text-white text-xs focus:outline-none focus:border-amber-500">
+          </div>
+        </div>
+
+        <div>
+          <label class="block text-xs font-semibold text-gray-300 mb-1.5">رابط صورة مرافقة (اختياري)</label>
+          <input id="new-news-img" type="url" placeholder="https://... رابط صورة الخبر أو المؤتمر" class="w-full px-4 py-2.5 rounded-xl bg-black/40 border border-white/10 text-white text-xs focus:outline-none focus:border-amber-500">
+        </div>
+
+        <div>
+          <label class="block text-xs font-semibold text-gray-300 mb-1.5">نص البيان / تفاصيل الخبر</label>
+          <textarea id="new-news-content" required rows="4" placeholder="اكتب نص البيان الرسمي بالتفصيل..." class="w-full px-4 py-2.5 rounded-xl bg-black/40 border border-white/10 text-white text-xs focus:outline-none focus:border-amber-500"></textarea>
+        </div>
+
+        <button type="submit" class="w-full py-3 rounded-xl btn-primary-glow font-bold text-xs mt-2">
+          نشر وحفظ البيان فوراً
+        </button>
+      </form>
+    </div>
+  </div>
+
+  <!-- Toast Container -->
+  <div id="toast-container"></div>
+
+  <!-- App Script -->
+  <script src="app.js"></script>
+</body>
+</html>
